@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+<music id="wyrm_tales">
+  <track id="{core}/music/underground" y="8" fade_tiles="3" />
+  <track id="{core}/music/nightly" if="isNight()" />
+  <track id="{mod:full_version}/music/minigame_platformer" />
+  <track id="{mod:full_version}/music/underwater" if="player.isUnderwater()"/>
+</music>
+</data>

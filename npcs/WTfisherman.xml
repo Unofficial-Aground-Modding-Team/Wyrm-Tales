@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+  <structure id="WT.dock" extends="dock_base" tile="sci1.dock" offsetY="64" dockWidth="6" dockTopWidth="10" dockHeight="4">
+		<tile id="sci1.dock_front" top="true" x="63/Tile.SIZE" y="0" />
+	</structure>
+  <structure id="WT.dock_flip" extends="dock_base" tile="sci1.dock" flip="true" offsetY="64" dockWidth="6" dockTopWidth="10" dockHeight="4">
+		<tile id="sci1.dock_front" top="true" x="63/Tile.SIZE" y="0" />
+	</structure>
+	<object id="WTfisherman.boat" tile="fisherman.boat" animation="fisherman.boat.idle" layer="back" renderer="floating" waterLine="57">
+		<tooltip section="npc" id="talk" if="!getFlag('fisherman_intro') && this.tile_x > 200" />
+		<operate>
+			<!-- <scene id="fisherman" show="intro_water" with="fade" if="!getFlag('fisherman_intro') && this.tile_x > 200">
+				<action>setFlag('fisherman_intro', true);</action>
+			</scene> -->
+		</operate>
+	</object>
+  <structure id="WTdockhouse" width="100" height="55" image="{core}/structures/dockhouse.png" type="crafting" name="enter" spawnX="area.isWater(this.tile_x-5, this.tile_y+1)?this.tile_x-4:this.tile_x+8">
+    <recipe type="dock" />
+    <!-- <operate></operate> -->
+  </structure>
+  <procedure id="farming.dock">
+    <structure id="WTdockhouse"/>
+    <set id="this" value="area.getStructureById('WTdockhouse')"/>
+    <structure id="WT.dock" x="area.getStructureById('WTdockhouse').tile_x-4" if="area.getStructureInTile(area.getStructureById('WTdockhouse').tile_x-4, area.getStructureById('WTdockhouse').tile_y).info.id == 'dock_empty'" />
+    <!-- <structure id="WT.dock_flip" x="area.getStructureById('WTdockhouse').tile_x+6" if="area.getStructureInTile(area.getStructureById('WTdockhouse').tile_x+6, area.getStructureById('WTdockhouse').tile_y).info.id == 'dock_empty_flip'" /> -->
+  </procedure>
+
+	<npc id="WTfisherman" tile="fisherman" action="talk" talk_sfx="talking1" sleepPos="[area.getObjectById('WTfisherman.boat').tile_x/Tile.SIZE,area.getObjectById('WTfisherman.boat').tile_y]">
+		<idle class="fishing" max_difficulty="4" storeIf="getFlag('WT_fish')" />
+		<operate>
+			<run procedure="fisherman.tips" />
+		</operate>
+	</npc>
+
+	<npc id="WTfisherman.cat" tile="cat" animation="cat" action="grab" stopForPlayer="getVar('fisherman_cat') > 0 && player.hasItem('toothfish')" speed="1">
+		<idle class="wander" fromX="110" toX="192" />
+		<tooltip section="actions" id="feed" if="player.hasItem('toothfish')" />
+		<operate>
+			<choose if="player.hasItem('toothfish')">
+				<section if="getVar('fisherman_cat') == 0">
+					<action>this.idle.runFrom(player)</action>
+					<item id="toothfish" count="-1" />
+					<wait seconds="0.25"><operate object="this" /></wait>
+					<dialogue section="fisherman" id="cat9" />
+					<action>setVar('fisherman_cat', 1)</action>
+				</section>
+				<section if="getVar('fisherman_cat') == 1">
+					<sound id="meow" /><wait seconds="0.5" />
+					<menu section="common" showCoins="true">
+						<dialogue section="fisherman" id="cat11" />
+						<choice id="yes">
+							<item id="toothfish" count="-1" modal="true" />
+							<action>this.idle.runFrom(player)</action>
+							<wait seconds="0.25"><operate object="this" /></wait>
+							<dialogue section="fisherman" id="cat12" />
+							<action>setVar('fisherman_cat', 2)</action>
+						</choice>
+						<choice id="no">
+							<action>this.idle.runFrom(player)</action>
+							<wait seconds="0.25"><operate object="this" /></wait>
+						</choice>
+					</menu>
+				</section>
+				<section>
+					<quest />
+					<dialogue section="fisherman" id="cat13" speaker="player" />
+					<item id="toothfish" count="-1" modal="true" />
+					<sound id="purr" /><wait seconds="2" />
+					<lerp object="this" alpha="0" seconds="0.25" />
+					<item id="cat" name="Peri" />
+					<remove object="this" />
+					<dialogue section="fisherman" id="cat15" />
+					<action>setVar('fisherman_cat', 3)</action>
+				</section>
+			</choose>
+			<section>
+				<action>this.idle.runFrom(player)</action>
+				<wait seconds="0.25"><operate object="this" /></wait>
+				<dialogue section="fisherman" id="cat8" />
+			</section>
+		</operate>
+	</npc>
+</npcs>

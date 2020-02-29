@@ -1,0 +1,84 @@
+<data>
+  <animation id='single_gold' x='0' count='1' color="a8ab20" colorScale="1.75" />
+  <animation id='single_green' x='0' count='1' color="52cf2d" />
+  <animation id='single_red' x='0' count='1' color="c61111" />
+  <animation id='single_light_blue' x='0' count='1' color="7ac1db" />
+
+  <data type="wyrmQuest">
+    this.ready = this.xml.get("ready");
+      if (this.ready == null) this.ready = true;
+
+    this.loop = this.xml.get("loop");
+      if (this.loop == null) this.loop = false;
+
+    this.icon = this.xml.get("icon");
+    this.animation = this.xml.get("animation");
+
+    this.requires = []; for (action in this.xml.elementsNamed("requires")) this.requires.push(action);
+
+    this.start = []; for (action in this.xml.elementsNamed("start")) this.start.push(action);
+    this.end = []; for (action in this.xml.elementsNamed("end")) this.end.push(action);
+  </data>
+
+  <!-- <include id="action.xml"/> -->
+
+  <!-- <wyrmQuest id="tales_sacrifice" loop="true">
+    <end>
+      if (!ev.player.getFlag('sacrifice_once')){
+        ev.player.setFlag('sacrifice_once',true);
+        setGlobal("wyrm_tier",1);
+        runProcedure("wyrm_basic_apply");
+      }
+    </end>
+  </wyrmQuest> -->
+
+
+  <!-- <wyrmQuest id="tales_upgrade1" ready="ev.getFlag('sacrifice_once')">
+    <end>
+      setGlobal("wyrm_tier",2);
+      runProcedure("wyrm_basic_apply");
+    </end>
+  </wyrmQuest> -->
+
+
+  <!-- <wyrmQuest id="golem_mine" ready="ev.getFlag('sacrifice_once')" loop="true">
+    <start>
+      if (!ev.getFlag("WT_light_buddy")){
+        ev.setFlag('WT_light_buddy',true);
+        ev.player.equipment.equip(getItem("tales_light_buddy").asItem(),ev.player,true);
+      }
+      s = getStructure("tales_cave_entrance").create(16,0);
+      s.area_id = "wyrm_tales.cave1";
+      s.x = 80; s.y = 80; s.allowReturn = true;
+      ev.player.getCurrentArea().addStructure(s);
+    </start>
+    <end>
+      a = ev.player.areas.get('wyrm_tales.main');
+      for (s in a.getStructuresById("tales_cave_entrance")) if (s.area_id == "wyrm_tales.cave1") a.removeStructure(s);
+      ev.player.areas.remove("wyrm_tales.cave1");
+      if (!ev.player.hasItem("smelter_blueprint")) ev.player.addItem("smelter_blueprint");
+    </end>
+  </wyrmQuest> -->
+
+
+
+  <!-- <wyrmQuest id="tales_farm" ready="ev.getFlag('sacrifice_once')" >
+    <start>
+      s = getStructure("tales_cave_entrance").create(48,0);
+      s.area_id = "wyrm_tales.farming";
+      s.x = 16; s.y = 16; s.allowReturn = true;
+      ev.player.getCurrentArea().addStructure(s);
+    </start>
+    <end> ev.player.addItem("growth_seed"); </end>
+  </wyrmQuest> -->
+
+
+<!--
+  <wyrmQuest id="tales_upgrade2" ready="ev.player.questComplete('tales_upgrade1')">
+    <end>
+      setGlobal("wyrm_tier",3);
+      runProcedure("wyrm_basic_apply");
+    </end>
+  </wyrmQuest> -->
+  
+</data>

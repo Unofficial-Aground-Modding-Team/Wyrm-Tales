@@ -1,0 +1,29 @@
+<data>
+  <planet id="wyrm_tales" height="80">
+    <orbit id="wyrm_tales.orbit" width="50" height="64" background="stars">
+      <area id="wyrm_tales.main" x="0"/>
+      <init><runAreaLoad /></init>
+      <onLoad><music id="orbit" seconds="1" /></onLoad>
+    </orbit>
+  </planet>
+  <animation id="wyrm_tales.planet">
+  		<append tile="planet4" animation="single" color="b54b4b" colorScale="2" />
+      <append tile="planet4.land1" animation="single" color="cf6f6f" colorScale="2" />
+      <append tile="planet4.land2" animation="single" color="732424" colorScale="2" />
+      <append tile="planet4.clouds" animation="single" color="b02515" colorScale="1" />
+  		<append tile="planet4.shadow" animation="single" /><frame visible="false" />
+  </animation>
+  <system id="wyrm_tales" bgm="voyage" x="100" y="100">
+    <planet id="wyrm_tales" tile="planet4" animation="wyrm_tales.planet" offsetX="-70" offsetY="45" name="system.planet.wyrm_tales{char:a}" />
+  </system>
+ <!-- offsetX="-70" offsetY="45" -->
+  <!-- TEMPORARY FOR COLOR TESTING -->
+<!-- looks smooth as fuck -->
+  <!-- #444BFF
+
+#4874CE
+
+#44AFFF
+ -->
+
+</data>

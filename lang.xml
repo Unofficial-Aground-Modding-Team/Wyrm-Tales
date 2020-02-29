@@ -1,0 +1,68 @@
+<data>
+  <lang id="en_US">
+    <section id="system">
+      <text id="wyrm_tales">Unoiks 106</text>
+    </section>
+    <section id="system.desc">
+      <text id="wyrm_tales">G-type star 30 light years from Earth.\nOne confirmed exoplanets.</text>
+    </section>
+    <section id="system.planet">
+      <text id="wyrm_tales">Magika</text>
+    </section>
+    <section id="system.planet.desc">
+      <text id="wyrm_tales">Considered for colonisation and for the Sanctuary Project, but rejected because of the local fauna and flora.</text>
+    </section>
+    <section id="item.names">
+      <text id="wyrm_weapon0">Wyrm Fang</text>
+      <text id="wyrm_drill0">Wyrm Teeth</text>
+      <text id="wyrm_body0">Wyrm Body</text>
+      <text id="wyrm_weapon1">Wyrm Fang</text>
+      <text id="wyrm_drill1">Wyrm Teeth</text>
+      <text id="wyrm_body1">Wyrm Body</text>
+      <text id="wyrm_weapon2">Wyrm Fang</text>
+      <text id="wyrm_drill2">Wyrm Teeth</text>
+      <text id="wyrm_body2">Wyrm Body</text>
+      <text id="wyrm_weapon3">Wyrm Fang</text>
+      <text id="wyrm_drill3">Wyrm Teeth</text>
+      <text id="wyrm_body3">Wyrm Body</text>
+      <text id='tales_light_buddy'>Light Orb</text>
+      <text id='WTwyrm'>Wyrm</text>
+    </section>
+    <section id='item.descriptions'>
+      <!-- <text id='wyrm0'>He claims that he used to be Arsonist Mc Stabby's best friend.</text> -->
+    </section>
+    <section id="entry">
+      <text id="wyrm_player">Wyrm Tales</text>
+      <text id="wyrm_player_desc">Play as a wyrm and save the world of Magika!</text>
+    </section>
+    <section id="create.character">
+      <text id="wyrm">Wyrm Color</text>
+    </section>
+    <section id="npc">
+      <text id="wyrm.miner.nnpc">Wyrms</text>
+      <text id="wyrm_tutorial_npc">Wyrm</text>
+      <text id="npc_wyrm_queen">Wyrm Queen</text>
+      <text id="enter">Enter</text>
+    </section>
+    <section id="common">
+      <text id="talk">Talk</text>
+      <text id="sleep_day">Sleep until Day</text>
+      <text id="sleep_night">Sleep until Night</text>
+    </section>
+    <section id='actions'>
+      <text id='talk'>Talk</text>
+      <text id='modify'>Modify</text>
+    </section>
+    <section id="world">
+      <text id="wyrm_tales.main">Wyrm Island</text>
+      <text id="golem_cave">Golem Cave</text>
+      <text id="wyrm_tales.farming">Farming</text>
+    </section>
+    <section id='familiar'>
+      <text id='adventure'>Let's have some adventures!</text>
+    </section>
+    <section id='golem'>
+      <text id='wonder'>Are these. . . Golem statues? I should probably tell the queen about this. . . </text>
+    </section>
+  </lang>
+</data>

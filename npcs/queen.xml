@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <lang id="en_US">
+    <section id="wyrm_queen">
+      <text id="sacrifice1">Defeat some enemy wyrms, and bring me their blood.</text>
+      <text id="golem_learn1">What do you say? Two giant golem statues? That means. . . the golems are still alive!</text>
+      <text id="tip1">Dragonblood is one of the best ways to restore your stamina and health when you can't reach me.</text>
+      <text id="tip2">Killing enemy wyrms is the best way to get dragonblood.</text>
+      <text id="tip3">Don't stay out at night. It's dangerous.</text>
+      <text id="tip4">Remember. If you find something, tell me about it.</text>
+      <text id="golem_mine1">My scouts have found two new areas. I need you to explore them.</text>
+      <!-- <text id="golem_mine2">The first one is a regenerating cave. The second one is an island that seems to be inhabited by a human. You should do two things when you arrive there : First of all collect some seeds, and second make contact with the human.</text> -->
+      <text id="golem_mine2">The first one is a regenerating cave, the second one is and island on which you should go gather some materials.</text>
+      <text id="golem_mine_complete">You found a spirit gem?! This is incredible! You need to find more of them!</text>
+      <text id="tales_farming_complete">You found a plant gem! Very good. I can use it to make a vine copse seed. \nWhat do you say? A dock of some kind? Hmm... Maybe there are still humans here. They might be able to help us. . .</text>
+    </section>
+    <section id="quests">
+      <text id='tales_sacrifice'>Sacrifice</text>
+      <text id='golem_mine'>Golem Cave</text>
+      <text id='tales_farming'>Farming</text>
+      <text id="gather_seeds">Gather Seeds</text>
+    </section>
+    <section id="quest.description">
+      <text id='tales_sacrifice'>wants the blood of our enemies.</text>
+      <text id='tales_upgrade1'> says that she will make me strong.</text>
+      <text id='golem_mine'>wants me to explore a cave full of golems.</text>
+      <!-- <text id='tales_farm'>Find some seeds and the [item=farm_blueprint] at a new island.</text> -->
+      <text id='tales_farming'>wants me to gather some seeds.</text>
+      <text id='tales_upgrade2'>wants to make me stronger.</text>
+      <text id='tales_upgrade3'>The Queen is going to make me as strong as she can!</text>
+    </section>
+  </lang>
+  <item id="wyrm_spirit_gem" type="none" icon="spirit_gem.ico">
+    <modifiers viewHidden="true" />
+  </item>
+  <action>
+    function wyrmModifyEquipment(player,slot,modifier){
+      var item = player.equipment.get(slot).get();
+      item.setName(Item.setParameter(item.getNameStr(), "m", modifier));
+    }
+
+    function wyrmUpgrade(slot,player,item){
+    var _slot = player.equipment.get(slot);
+    var original_item = _slot.get();
+    trace(original_item.getNameStr());
+    player.equipment.forceEquip(slot, player, getItem(item).asItem());
+    var new_item = _slot.get();
+    new_item.setName(original_item.getNameStr());
+    }
+
+    function getWyrmQuest(player){
+    if (
+    !player.hasQuest('tales_sacrifice')
+    ||
+    (player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice'))
+    ||
+    (!player.hasQuest('golem_mine') && !player.hasQuest('tales_farming') && player.questComplete('tales_sacrifice'))
+    ||
+    player.canCompleteQuest('golem_mine')
+    ||
+    player.canCompleteQuest('tales_farming')
+    ||
+    (player.getFlag('WTGolemStatue') && !player.getFlag('learnGolem'))
+    ){return true;}
+    else return false;
+    }
+  </action>
+  <npc id="npc_wyrm_queen" tile="wyrm_queen" icon="wyrm_queen.ico"/>
+  <procedure id="wyrm_quests">
+    <set id="this" value="area.getNPC('wyrm_house')"/>
+    <choose>
+    <section if="!player.hasQuest('tales_sacrifice')">
+      <dialogue section="wyrm_queen" id="sacrifice1" speaker="this"/>
+      <quest id="tales_sacrifice"/>
+    </section>
+    <section if="player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice')">
+      <dialogue text="Good. Very good."/>
+      <action>
+        wyrmUpgrade('weapon',player,'wyrm_weapon1');
+        wyrmUpgrade('armor',player,'wyrm_armor1');
+        wyrmUpgrade('pickaxe',player,'wyrm_drill1');
+      </action>
+      <complete quest="tales_sacrifice" />
+    </section>
+    <section if="!player.hasQuest('golem_mine') && !player.hasQuest('tales_farming') && player.questComplete('tales_sacrifice')">
+      <dialogue section="wyrm_queen" id="golem_mine1"/>
+      <dialogue section="wyrm_queen" id="golem_mine2"/>
+      <quest id="golem_mine"/>
+      <quest id="tales_farming"/>
+      <structure id="tales_cave_entrance" x="1" y="0">
+        <teleport area="wyrm_tales.golem_cave" x="32" y="32" allowReturn="true" />
+      </structure>
+      <structure id="tales_cave_entrance" x="3" y="0">
+        <teleport area="wyrm_tales.farming" x="1" y="1" allowReturn="true" />
+      </structure>
+      <dialogue text="Here, take this light orb to help you."/>
+      <action>
+        if (!getFlag("WT_light_buddy")){
+          setFlag('WT_light_buddy',true);
+        }
+      </action>
+      <item id="tales_light_buddy"/>
+      <equip id="tales_light_buddy"/>
+    </section>
+    <section if="player.canCompleteQuest('golem_mine')">
+      <dialogue section="wyrm_queen" id="golem_mine_complete"/>
+      <complete quest="golem_mine" useResources="false"/>
+    </section>
+    <section if="player.canCompleteQuest('tales_farming')">
+      <dialogue section="wyrm_queen" id="tales_farming_complete"/>
+      <complete quest="tales_farming" useResources="false"/>
+      <item id="plant_gem" count="-1" hidden="true"/>
+      <item id="growth_seed"/>
+    </section>
+    <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
+      <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
+    </section>
+    <group>
+      <dialogue section="wyrm_queen" id="tip1" speaker='this' />
+      <dialogue section="wyrm_queen" id="tip2" speaker='this' />
+      <dialogue section="wyrm_queen" id="tip3" speaker='this' />
+      <dialogue section="wyrm_queen" id="tip4" speaker='this' />
+    </group>
+  </choose>
+  </procedure>
+  <quest id="tales_sacrifice" exp="50" giver="npc_wyrm_queen">
+    <item id="dragonblood" count="5"/>
+  </quest>
+  <quest id="golem_mine" exp="100" giver="npc_wyrm_queen">
+    <script id="getFlag('golem_cave')" name="wyrm_tales.dungeon>cave1" tile="golem.ico"/>
+    <item id="spirit_gem" hidden="true"/>
+  </quest>
+  <quest id="tales_farming" exp="100" giver="npc_wyrm_queen">
+    <script id="player.hasItem('wheat_seed') && player.hasItem('sugar_seed') && player.hasItem('orchard_seed') && player.hasItem('cotton_seed') && player.hasItem('rice_seed')" name="quest>gather_seeds" tile="tree_seed.ico"/>
+    <!-- <item id="wheat_seed"/>
+    <item id="sugar_seed"/>
+    <item id="orchard_seed"/>
+    <item id="cotton_seed"/>
+    <item id="rice_seed"/> -->
+    <item id="plant_gem" hidden="true"/>
+  </quest>
+  <quest id="tales_spirit_upgrade" exp="100" give="npc_wyrm_queen">
+    <script id="player.questComplete('golem_mine')" name="quest>golem_mine" tile="golem.ico"/>
+    <item id="spirit_gem" count="1"/>
+    <item id="alter_gem" count="1"/>
+  </quest>
+</data>

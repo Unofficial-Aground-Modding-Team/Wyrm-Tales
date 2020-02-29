@@ -1,0 +1,164 @@
+<data>
+  <layers id="wurm" width="16" height="16" cols="4" rows="5">
+    <layer tile="wyrm" color="wyrm" >
+      <frame x="0" count="17"/>
+    </layer>
+  </layers>
+  <animation id="wyrm.sleep" equals='wyrm.idle'/>
+  <animation id="wyrm.walk.sweat" equals='wyrm.walk'/>
+  <animation id="wyrm.walk.heavy" equals='wyrm.walk'/>
+  <animation id="wyrm.swim" equals='wyrm.walk'/>
+  <animation id="wyrm.mine" equals='wyrm.dig'/>
+  <animation id="wyrm.mine2" equals='wyrm.mine'/>
+  <animation id="wyrm.mine3" equals='wyrm.mine'/>
+  <animation id="wyrm.ride" equals='wyrm.idle'/>
+  <animation id="wyrm.beard.idle"><frame visible="false"/></animation>
+<procedure id="wyrm.modify">
+  <window type="items" title="actions.modify" if="getFlag('WTmodifySelf')" filter="function(i){return Item.hasModifiers(i);}" enabled="function(i){return mod != i;}" additionalInfo="function(item, s, w, x, y){return Item.halfScale(Item.addModifierInfo, item, s, w, x, y);}">
+    <action>
+      var id = item.id;
+      //trace(this.getEquipment());
+      var modifier = Item.getParameter(this.equipment.get(slot).get().getNameStr(),"m");
+      evalXml('&lt;item id="'+id+'" count="-1" hidden="true"/>');
+      wyrmModifyEquipment(player,slot,id);
+      evalXml('&lt;item id="'+modifier+'" count="1" hidden="true"/>')
+    </action>
+  </window>
+</procedure>
+<skill id="WThealth" name="stats.health" start_cost="6" cost_per_level="2">
+  <stat id="health" value="10" />
+</skill>
+<skill id="WTstamina" name="stats.stamina" start_cost="6" cost_per_level="2">
+  <stat id="stamina" value="50" />
+</skill>
+<skill id="WTweight" name="stats.weight" start_cost="8" cost_per_level="2">
+  <stat id="weight" value="5" />
+</skill>
+<skill id="WTmine_speed" name="stats.mine_speed" start_cost="20" cost_per_level="10">
+  <stat id="mine_speed" value="1" />
+</skill>
+<skill id="WTsight" name="stats.sight" start_cost="30" cost_per_level="15">
+  <stat id="sight" value="1" />
+</skill>
+<skill id="WTevasion" name="stats.evasion" start_cost="6" cost_per_level="2">
+  <stat id="evasion" value="3" />
+</skill>
+<skill id="WTcritical" name="stats.critical" start_cost="6" cost_per_level="2">
+  <stat id="critical" value="5" />
+</skill>
+<skill id="WTattack" name="stats.attack" start_cost="50" cost_per_level="25">
+  <stat id="attack" value="1" />
+</skill>
+<skill id="WTcut" name="stats.cut" start_cost="50" cost_per_level="25">
+  <stat id="cut" value="1" />
+</skill>
+<skill id="WTdefense" name="stats.defense" start_cost="50" cost_per_level="25">
+  <stat id="defense" value="1" />
+</skill>
+<skill id="WTrange" name="stats.range" start_cost="20" cost_per_level="10" flag="WT_range">
+  <stat id="range" value="1" />
+</skill>
+<skill id="WTfishing" name="stats.fishing" start_cost="50" cost_per_level="25" flag="WT_fish">
+  <stat id="fishing" value="1" />
+</skill>
+<skill id="WTtrap" name="stats.trap" start_cost="50" cost_per_level="25" flag="WT_trap">
+  <stat id="trap" value="1" />
+</skill>
+<skill id="WTbargaining" name="stats.bargaining" start_cost="20" cost_per_level="0" flag="WT_bargain">
+  <stat id="bargaining" value="1" />
+</skill>
+<skill id="WTspellcast" name="stats.spellcast" start_cost="20" cost_per_level="10" flag="WT_spellcast">
+  <stat id="spellcast" value="1" />
+</skill>
+<skill id="WToxygen" name="stats.oxygen" start_cost="10" cost_per_level="5" flag="show_oxygen">
+  <stat id="oxygen" value="5" />
+</skill>
+    <player id='wyrm.tales' layers="wurm" health="100" stamina="200" maxLevel="30" speed="10" talk_sfx="talking7" animation='wyrm'>
+      <skill id="WThealth" maxLevel="20" />
+      <skill id="WTstamina" maxLevel="20" />
+      <skill id="WTweight" maxLevel="20" />
+      <skill id="WTcritical" maxLevel="10" />
+      <skill id="WTevasion" maxLevel="10" />
+      <skill id="WTmine_speed" maxLevel="5" />
+      <skill id="WTsight" maxLevel="3" />
+      <skill id="WTattack" maxLevel="3" />
+      <skill id="WTdefense" maxLevel="3" />
+      <skill id="WTcut" maxLevel="3" />
+      <skill id="WTrange" maxLevel="5" />
+      <skill id="WTtrap" maxLevel="3" />
+      <skill id="WTbargaining" maxLevel="5" />
+      <skill id="WTfishing" maxLevel="3" />
+      <skill id="WToxygen" maxLevel="8" />
+      <skill id="WTspellcast" maxLevel="5" />
+      <stat id="health" />
+      <stat id="stamina" /><stat id="regen_health" flag="never_set" /><stat id="regen_stamina" flag="never_set" />
+      <stat id="weight" />
+      <stat id="critical" />
+      <stat id="evasion" />
+      <stat id="speed" />
+      <stat id="endurance" />
+      <stat id="mine_speed" />
+      <stat id="sight" />
+      <stat id="attack" />
+      <stat id="defense" />
+      <stat id="cut" />
+      <stat id="mine" />
+      <stat id="range" flag="WT_range"/>
+      <stat id="trap" flag="WT_trap" />
+      <stat id="fishing" flag="WT_fish" />
+      <stat id="oxygen" flag="show_oxygen" />
+      <stat id="bargaining" flag="WT_bargain" />
+      <stat id="spellcast" flag="WT_spellcast" />
+      <stat id="reset" flag="never_set" />
+      <stat id="timer" flag="never_set" />
+      <stat id="regen_power" flag="never_set" />
+      <stat id="light" flag="never_set" />
+      <slot id="weapon">
+      <!-- <set id="slot" value="'weapon'"/>
+      <run procedure="wyrm.modify"/> -->
+      </slot>
+      <slot id="shield" flag='WT_light_buddy' />
+      <slot id="pickaxe"/>
+      <slot id="armor">
+      <!-- <set id="slot" value="'armor'"/>
+      <run procedure="wyrm.modify"/> -->
+      </slot>
+
+      <slot id="head" flag="WT_head" />
+      <slot id="back" flag="WT_back" />
+
+      <slot id="familiar">
+      <!-- <set id="slot" value="'familiar'"/>
+      <run procedure="wyrm.modify"/> -->
+      </slot>
+
+      <light tile="light.small" color="888888" />
+      <color id="wyrm" />
+      <init>
+      </init>
+      <handleSecond>
+        <run procedure="wyrm.handleSecond"/>
+        <run procedure="player.handleSecond"/>
+      </handleSecond>
+      <addItem>
+        <item id="dismantle" hidden="true" if="player.hasItemType('blueprint') && !player.hasItem('dismantle')" />
+        <action if="player.getItemCount('dismantle') > 1">
+          player.inventory.addItems(getItem("dismantle"), 1-player.getItemCount('dismantle'));
+        </action>
+        <action>//if (ev != null && player != null && ev.player == player) wyrmQuest(checkOpen(player),player);</action>
+      </addItem>
+      <onKill>
+        <invokeLater seconds="0.2">
+          <action>
+          //  if (ev != null && player != null && ev.player == player) wyrmQuest(checkOpen(player),player);
+          </action>
+        </invokeLater>
+      </onKill>
+    </player>
+    <colors type="wyrm">
+      <!-- <color value="898989" id="gray" /> -->
+      <color value="cf2b2b" id="red" />
+      <color value="0099cc" id="blue" />
+      <color value="719510" id="green" />
+    </colors>
+</data>

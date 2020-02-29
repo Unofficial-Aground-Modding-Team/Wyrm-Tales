@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apprenticealchemist>
+  <action>
+    function flaggy(flag){
+    if (!getFlag(flag)){setFlag(flag,true);}
+    }
+  </action>
+  <data type="navMap">
+    //this.id = this.xml.get("id");
+    this.bg = this.xml.get("bg");
+    this.bg_anim = this.xml.get("bg_anim") == null ? 'single' : this.xml.get("bg_anim") ;
+    this.bgm = this.xml.get("bgm") ? 'voyage' : this.xml.get("bg_anim") ;
+    this.getAreaData = function(xml){
+      var o = {};
+    }
+    this.areas = []; for (area in this.xml.elementsNamed('mapArea')) this.areas.push(this.getAreaData(area));
+
+    // this._load = function() {
+    // this.areas = [];
+    //         for (area in this.xml.elementsNamed('mapArea')) {
+    //                 this.areas.push({area: area.xml.get('id'), available: area.xml.get('available'), x: area.xml.get('x'), y: area.xml.get('y')});
+    //             } else {
+    //                 trace('[Area] with id "' + area.get('id') + '" not found!');
+    //             }
+    //         }
+    //     };
+    // };
+  </data>
+  <navMap id="wyrm_maze" bg="minigame.shooter.title" bg_anim="single" bgm="voyage">
+    <mapArea id="test" icon="wyrm_tunnel" animation="single" available="true" x="50" y="50"/>
+  </navMap>
+  <procedure id="wyrm_maze_map">
+    <action>
+      var data = getData('navMap','wyrm_maze');
+      var bg = data.bg;
+      var bg_anim = data.bg_anim;
+      var bgm = data.bgm;
+      var areas = data.areas;
+
+      evalXml('&lt;show id="back" type="tile" tile="'+bg+'" animation="'+bg_anim+'" renderer="static" x="0" y="0" fps="10" modal="true"/>')
+      for (o in areas){if o
+    </action>
+  </procedure>
+  <!-- addPress(function(e){trace(e.key);}) -->
+</apprenticealchemist>

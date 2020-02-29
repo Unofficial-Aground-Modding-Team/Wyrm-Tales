@@ -1,0 +1,6 @@
+<data>
+  <include id="planet.xml"/>
+  <include id="main.xml"/>
+  <include id="dungeons/cave.xml"/>
+  <include id="dungeons/island.xml"/>
+</data>

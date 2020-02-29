@@ -1,0 +1,49 @@
+<data>
+
+  <area id="wyrm_tales.cave1" width="11" height="11" background="black" external="wyrm_tales.main">
+    <tiles id="stone" start="0" end="1"/>
+    <tiles id="blackstone" x="0"/>
+    <tiles id="blackstone" y="0"/>
+    <tiles id="blackstone" x="10"/>
+    <tiles id="blackstone" y="10"/>
+    <mine x="5" y="5"/>
+    <objects id="golem" count="20" start="0" end="1" tile="stone"/>
+    <structure id="wyrm_tales_teleport_main" x="5" y="5"/>
+    <init><runAreaLoad/></init>
+    <onLeave>
+      <action>
+        if(player.questComplete('golem_mine')){player.areas.remove('wyrm_tales.cave1');}
+      </action>
+    </onLeave>
+  </area>
+  <area id="wyrm_tales.golem_cave" width="64" height="64" background="black" temporary="true">
+		<tiles id="stone" start="0" end="1" />
+		<!-- <tiles id="dirt" start="0.1" end="0.3" /> -->
+		<mine start="0.45" end="0.55" percent="0.3"/>
+		<tiles id="blackstone" y="0" />
+		<tiles id="blackstone" y="63" />
+		<tiles id="blackstone" x="0" />
+		<tiles id="blackstone" x="63" />
+		<ore id="quartz" start="0.1" end="0.3" percent="0.00125" tile="dirt" />
+		<ore id="coal" start="0.1" end="0.3" percent="0.01875" tile="dirt" />
+		<ore id="diamond" start="0.9" end="1.0" percent="0.00125" tile="stone" />
+		<ore id="gold" start="0.75" end="1.0" percent="0.00625" tile="stone" />
+		<ore id="iron" start="0" end="0.9" percent="0.01875" tile="stone" />
+		<!-- <ore id="lava" start="0.7" end="0.8" percent="1" tile="stone" /> -->
+		<objects id="golem" start="0.0" end="1.0" percent="0.00375" tile="stone" />
+		<objects id="gold_golem" start="0.45" end="0.55" percent="0.00075" />
+		<structure id="wyrm_tales_teleport_main" x="32" y="32" />
+		<mine x="32" y="32" light="3" /><mine x="33" y="32" light="3" /><mine x="32" y="31" light="3" /><mine x="33" y="31" light="3" />
+		<set id="chest_x" value="randInt(10, 50)" />
+    <set id="chest_y" value="randInt(10, 50)" />
+		<object id="treasure_chest" x="chest_x" y="chest_y">
+			this.inventory.addItems(Item.get("spirit_gem"), 1);
+		</object>
+		<set id="pillar_x" value="randInt(4, 59)" />
+		<set id="pillar_y" value="randInt(6, 57)" />
+		<spreadTiles x="pillar_x" y="pillar_y" tile="invisible_block" count="100" />
+		<structure id="recipe_pillar" x="pillar_x" y="pillar_y" recipe="transmute_gold" />
+    <init><action>if(getFlag('golem_cave') == false){setFlag('golem_cave',true);}</action></init>
+    <onLeave><action>player.areas.remove('wyrm_tales.golem_cave');</action></onLeave>
+	</area>
+</data>

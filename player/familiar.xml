@@ -1,0 +1,47 @@
+<data>
+  <familiar id="WTwyrm" type="ground">
+    <breakPower amount="1" />
+		<attack type="melee" damage="3" />
+	</familiar>
+  <item id='WTwyrm' type='none' slot='familiar' cost='0' weight='0' icon='wyrm.ico' unequip='false'>
+    <action id='use' name='talk'>
+      <dialogue section='familiar' id='adventure'/>
+    </action>
+    <action id='rename'/>
+    <familiar id='WTwyrm' animation='wyrm' tile='wyrm' fps='10' underwater='true'/>
+  </item>
+
+  <familiar id="WTbaby_dragon" type="flying" canWalk="true" element="fire" standAttack="true">
+    <attack type="melee" range="0.5" damage="3" animation="doFire" hitEffect="fire_sm">
+      <pre><play object="this" animation="prepareFire" /></pre>
+    </attack>
+  </familiar>
+  <item id="WTdragon" type="animal" weight="4" slot="familiar" icon="baby_dragon.ico">
+    <action id="equip" /><action id="rename" />
+    <familiar id="WTbaby_dragon" tile="baby_dragon" animation="baby_dragon" />
+  </item>
+
+  <familiar id="WTyoung_dragon" type="flying" element="fire">
+    <attack type="breath" damage="3" range="7" repeat="2" animation="fire" sfx="dragon_atk">
+      <projectile tile="fire" glow="true" speed="2" frames="8" breakTile="1" breakPower="8" scaleTo="2" offsetX="-24" offsetY="1" hitEffect="fire_sm" hitTrees="true" color="f9be0b" colorScale="2">
+        <light tile="light.small" color="cc5500" />
+      </projectile>
+    </attack>
+  </familiar>
+  <item id="WTyoung_dragon" type="animal" weight="20" slot="familiar" icon="young_dragon.ico">
+    <action id="equip" /><action id="rename" />
+    <familiar id="young_dragon" tile="young_dragon" animation="young_dragon" />
+  </item>
+
+  <familiar id="WTadult_dragon" type="flying" element="fire">
+    <attack type="breath" damage="4" range="13" repeat="2" animation="hover_fire" sfx="dragon_atk" cost="5">
+      <projectile tile="fire" glow="true" speed="2" frames="8" breakTile="2" breakPower="4" scaleTo="3" offsetX="-33" offsetY="-5" hitEffect="fire_med" hitTrees="true" color="f9be0b" colorScale="2">
+        <light tile="light.small" color="cc5500" />
+      </projectile>
+    </attack>
+  </familiar>
+  <item id="WTadult_dragon" type="animal" weight="60" slot="familiar" icon="adult_dragon.ico">
+    <action id="equip" /><action id="rename" />
+    <familiar id="adult_dragon" tile="adult_dragon" animation="adult_dragon" />
+  </item>
+</data>
