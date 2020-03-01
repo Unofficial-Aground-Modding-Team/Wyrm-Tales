@@ -48,6 +48,7 @@
         <teleport area="wyrm_tales.main" x="1" y="0" allowReturn="false"/>
       </structure>
       <structure id="WTdockhouse" if="area.getStructureById('WTdockhouse') == null"/>
+      <object id="WTfisherman.cat" if="area.getObject('WTfisherman.cat')"/>
       <!-- <object id="WTfisherman.boat" x="-4" if="area.getObject('WTfisherman.boat') == null"/> -->
       <tile id="seagull" animation="seagull.walk" x="random()*5" />
 			<tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />

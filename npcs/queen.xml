@@ -8,16 +8,16 @@
     }
 
     function wyrmUpgrade(item){
-    //try{
+      try{throw
       var player=getLocalPlayer();
       var slot = getItem(item).xml.get('slot');
       var _slot = player.equipment.get(slot);
       var name = player.equipment.get(slot).get().getNameStr();
       player.equipment.forceEquip(slot, player, getItem(item).asItem());
       _slot.get().setName(name);
-    //  }
-    //  catch( e ){trace("{mod:wyrm_tales}/npcs/queen.xml line 19" + e);}
-    //  }
+      }
+      catch(e:Dynamic){trace('Upgrade Error' + e);}
+    }
 
     function getWyrmQuest(player){
     if (
