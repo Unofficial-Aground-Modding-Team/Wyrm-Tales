@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <npcs>
-  <structure id="WT.dock" extends="dock_base" tile="sci1.dock" offsetY="64" dockWidth="6" dockTopWidth="10" dockHeight="4">
-		<tile id="sci1.dock_front" top="true" x="63/Tile.SIZE" y="0" />
-	</structure>
-  <structure id="WT.dock_flip" extends="dock_base" tile="sci1.dock" flip="true" offsetY="64" dockWidth="6" dockTopWidth="10" dockHeight="4">
-		<tile id="sci1.dock_front" top="true" x="63/Tile.SIZE" y="0" />
-	</structure>
 	<object id="WTfisherman.boat" tile="fisherman.boat" animation="fisherman.boat.idle" layer="back" renderer="floating" waterLine="57">
 		<tooltip section="npc" id="talk" if="!getFlag('fisherman_intro') && this.tile_x > 200" />
 		<operate>
@@ -18,12 +12,6 @@
     <recipe type="dock" />
     <!-- <operate></operate> -->
   </structure>
-  <procedure id="farming.dock">
-    <structure id="WTdockhouse"/>
-    <set id="this" value="area.getStructureById('WTdockhouse')"/>
-    <structure id="WT.dock" x="area.getStructureById('WTdockhouse').tile_x-4" if="area.getStructureInTile(area.getStructureById('WTdockhouse').tile_x-4, area.getStructureById('WTdockhouse').tile_y).info.id == 'dock_empty'" />
-    <!-- <structure id="WT.dock_flip" x="area.getStructureById('WTdockhouse').tile_x+6" if="area.getStructureInTile(area.getStructureById('WTdockhouse').tile_x+6, area.getStructureById('WTdockhouse').tile_y).info.id == 'dock_empty_flip'" /> -->
-  </procedure>
 
 	<npc id="WTfisherman" tile="fisherman" action="talk" talk_sfx="talking1" sleepPos="[area.getObjectById('WTfisherman.boat').tile_x/Tile.SIZE,area.getObjectById('WTfisherman.boat').tile_y]">
 		<idle class="fishing" max_difficulty="4" storeIf="getFlag('WT_fish')" />

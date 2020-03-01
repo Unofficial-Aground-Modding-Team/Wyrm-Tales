@@ -1,11 +1,12 @@
 <data>
-
-
   <include id="wyrm.xml"/>
 
   <animation id="light_buddy.idle" x="4" count="8" />
   <animation id="equipment.tales_light_buddy.idle"><frame visible="false"/></animation>
   <object id="light_buddy" tile="magic_orb" animation="light_buddy.idle" fps="10" layer="top" save="false" width="16" height="16" color="ffff33" removeOnComplete="false">
+    <addedToArea>
+      Movement.seek(light_buddy, player, 5, false, Tile.SIZE, 0, Tile.SIZE*2);
+    </addedToArea>
     <light tile="light.large" color="fae1b5" flicker="true" />
   </object>
 

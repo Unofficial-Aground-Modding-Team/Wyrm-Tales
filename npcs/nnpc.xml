@@ -18,7 +18,7 @@
     </idle>
 		<color id="wyrm" />
 	</npc>
-  <action>
+  <!-- <action>
     function getDistance(o1,o2){
       var dx = o1.xPos - o2.xPos;
       var dy = o1.yTile - o2.yTile;
@@ -136,5 +136,5 @@
       </handleLocation>
     </idle>
     <color id="wyrm" />
-  </npc>
+  </npc> -->
 </data>

@@ -86,12 +86,4 @@
     <afterTeleport><dig x="player.tile_x" y="player.tile_y" speed="2" /></afterTeleport>
   </structure>
 
-  <!-- <structure id='wyrm_tales_teleport_main' width='16' height='16' image="{core}/magic1/structures/wyrm_tunnel.png" name="enter" allowReturn="false">
-    <operate>
-      <choose>
-        <return if="player.prevLocation != null" with="ellipse"/>
-        <teleport area="wyrm_tales.main" x="1" y="-1" with="ellipse"/>
-      </choose>
-   </operate>
-  </structure> -->
 </data>

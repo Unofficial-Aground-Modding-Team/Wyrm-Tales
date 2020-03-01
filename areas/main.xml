@@ -1,18 +1,5 @@
 <data>
-<entry player="wyrm.tales" id="wyrm_tales" area="wyrm_tales.main" x="9" y="2" name="entry.wyrm_player" description="entry.wyrm_player_desc" >
 
-</entry>
-<scene id="wyrm_tales">
-    <show id="intro">
-    <music id="Cutscene9"/>
-    <layer id="black" />
-    <dialogue text="Welcome, my Child."/>
-    <dialogue text="You are a Wyrm. I am your Mother. Obey me, and you will thrive. If you disobey.[pause=2] .[pause=2] . you shall perish."/>
-    <dialogue text="If you wish to sleep, come to me. You may use the mouth of the Grand Queen as a Storehouse. She won't mind, since she is dead."/>
-    <dialogue text="Oh yes, one last thing before you go into the world. . you will travel with another wyrm. You will soon discover the reason for this."/>
-    <wait seconds="1" />
-  </show>
-</scene>
 <structure id="dragon_lair_WT" width="192" height="112" image="{core}/structures/dragon_lair.png" type="lair" title="structure.tooltip.dragon_lair2" animalX="80" animalY="96" slot="structure.dragon_lair" allowFlying="true" includeInventory="57">
   <tooltip id="dragon_lair2" if="getFlag('dragon_knowledge')" />
   <tooltip id="inspect" if="!getFlag('dragon_knowledge')" />

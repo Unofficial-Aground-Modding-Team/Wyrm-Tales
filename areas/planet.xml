@@ -16,14 +16,4 @@
   <system id="wyrm_tales" bgm="voyage" x="100" y="100">
     <planet id="wyrm_tales" tile="planet4" animation="wyrm_tales.planet" offsetX="-70" offsetY="45" name="system.planet.wyrm_tales{char:a}" />
   </system>
- <!-- offsetX="-70" offsetY="45" -->
-  <!-- TEMPORARY FOR COLOR TESTING -->
-<!-- looks smooth as fuck -->
-  <!-- #444BFF
-
-#4874CE
-
-#44AFFF
- -->
-
-</data>
+ </data>

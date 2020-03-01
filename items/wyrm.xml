@@ -1,83 +1,29 @@
 <data>
-  <procedure id="wyrm_basic_apply">
-    <action>
-      var i = getItem("wyrm_weapon" + getGlobal("wyrm_tier")); player.equipment.forceEquip("weapon", player, i.asItem());
-      var i2 = getItem("wyrm_drill" + getGlobal("wyrm_tier")); player.equipment.forceEquip("pickaxe", player, i2.asItem());
-      var i3 = getItem("wyrm_body" + getGlobal("wyrm_tier")); player.equipment.forceEquip("armor", player, i3.asItem());
-      player.multiItemPopup([new ItemCt(i, 1),new ItemCt(i2, 1),new ItemCt(i3, 1)]);
-    </action>
-  </procedure>
-<action>
-
-</action>
-<item id="wyrm_base" type="none" cost="0" weight="0" icon="wyrm.ico" unequip="false" underwater="true"/>
+  <item id="wyrm_base" type="none" cost="0" weight="0" icon="wyrm.ico" unequip="false" underwater="true"/>
   <animation id="equipment.wyrm_weapon" x='0' y='0' count='4' reverse="true"/>
-  <animation id="equipment.wyrm_weapon0" equals="equipment.wyrm_weapon"/>
-  <animation id="equipment.wyrm_weapon1" equals="equipment.wyrm_weapon"/>
-  <animation id="equipment.wyrm_weapon2" equals="equipment.wyrm_weapon"/>
-  <animation id="equipment.wyrm_weapon3" equals="equipment.wyrm_weapon"/>
   <!-- Starting -->
-  <item id="wyrm_weapon0" extends="wyrm_base" sfx="wyrm_attack" slot="weapon" attack="2" cut="2" knockback="5" stamina="10"/>
+  <item id="wyrm_weapon0" extends="wyrm_base" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" attack="2" cut="2" knockback="5" stamina="10"/>
   <item id="wyrm_drill0" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="1" breakPower="1" icon="wyrm.ico"/>
   <item id="wyrm_body0" extends="wyrm_base" slot="armor" defense="0">
     <equipCost health="-1" stamina="-1" />
   </item>
   <!-- Quick upgrade, like Iron, but not optional -->
-  <item id="wyrm_weapon1" type="none" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="3" cut="2" knockback="5" stamina="8" underwater="true" />
+  <item id="wyrm_weapon1" type="none" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="3" cut="2" knockback="5" stamina="8" underwater="true" />
   <item id="wyrm_drill1" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="2" breakPower="2" icon="wyrm.ico"/>
   <item id="wyrm_body1" type="none" slot="armor" cost="0" weight="0" defense="1" icon="wyrm.ico" unequip="false" capacity="25">
     <equipCost health="-2" stamina="-3" />
   </item>
   <!-- Actually makes the difference. kinda like Steel -->
-  <item id="wyrm_weapon2" type="none" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="5" cut="2" knockback="5" stamina="6" underwater="true" />
+  <item id="wyrm_weapon2" type="none" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="5" cut="2" knockback="5" stamina="6" underwater="true" />
   <item id="wyrm_drill2" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="3" breakPower="3" icon="wyrm.ico"/>
   <item id="wyrm_body2" type="none" slot="armor" cost="0" weight="0" defense="3" icon="wyrm.ico" unequip="false" capacity="50">
     <equipCost health="-3" stamina="-5" />
   </item>
   <!-- Still before splitting... I think -->
   <!-- Drill / Wyrm Drill tier -->
-  <item id="wyrm_weapon3" type="none" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="6" cut="2" knockback="5" stamina="4" underwater="true" />
+  <item id="wyrm_weapon3" type="none" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="6" cut="2" knockback="5" stamina="4" underwater="true" />
   <item id="wyrm_drill3" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="4" breakPower="4" icon="wyrm.ico"/>
   <item id="wyrm_body3" type="none" slot="armor" cost="0" weight="0" defense="4" icon="wyrm.ico" unequip="false" capacity="75">
     <equipCost health="-4" stamina="-8" />
   </item>
-
-  <procedure id="wyrm.tales">
-  		<action>
-  		id = "wyrm.tales"
-  		</action>
-  		<run procedure="changePlayerForm" />
-  		<action>
-  			player.equipment.forceEquip("weapon", player, getItem("wyrm_weapon0").asItem());
-        <!-- player.equipment.forceEquip("shield", player, getItem("wyrm_offhand0").asItem()); -->
-        player.equipment.forceEquip("pickaxe", player, getItem("wyrm_mine0").asItem());
-  			player.equipment.forceEquip("armor", player, getItem("wyrm_body0").asItem());
-  		</action>
-  </procedure>
-  <procedure id="wyrm_equip1.tales">
-    <action>
-      player.equipment.forceEquip("weapon", player, getItem("wyrm_weapon1").asItem());
-      <!-- player.equipment.forceEquip("shield", player, getItem("wyrm_offhand").asItem()); -->
-      player.equipment.forceEquip("pickaxe", player, getItem("wyrm_mine1").asItem());
-      player.equipment.forceEquip("armor", player, getItem("wyrm_body1").asItem());
-    </action>
-  </procedure>
-  <procedure id="wyrm_equip2.tales">
-    <action>
-      player.equipment.forceEquip("weapon", player, getItem("wyrm_weapon2").asItem());
-      <!-- player.equipment.forceEquip("shield", player, getItem("wyrm_offhand").asItem()); -->
-      player.equipment.forceEquip("pickaxe", player, getItem("wyrm_mine2").asItem());
-      player.equipment.forceEquip("armor", player, getItem("wyrm_body2").asItem());
-    </action>
-  </procedure>
-  <procedure id="wyrm_equip3.tales">
-    <action>
-      player.equipment.forceEquip("weapon", player, getItem("wyrm_weapon3").asItem());
-      <!-- player.equipment.forceEquip("shield", player, getItem("wyrm_offhand").asItem()); -->
-      player.equipment.forceEquip("pickaxe", player, getItem("wyrm_mine3").asItem());
-      player.equipment.forceEquip("armor", player, getItem("wyrm_body3").asItem());
-    </action>
-  </procedure>
   </data>
-  <!-- Post-Split will go into other files. -->
-  <!-- Tech Exo - Queen Evo - [doesn't exists in vanilla as of 1.7.1] Magic -->

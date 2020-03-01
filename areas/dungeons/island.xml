@@ -1,13 +1,16 @@
 <data>
-  <area id="wyrm_tales.farming" width="32" height="12" background="sky" external="wyrm_tales.main">
+
+  <area id="wyrm_tales.farming" width="32" height="12" background="sky">
     <tiles id="dirt" start="0" end="0.5" />
     <tiles id="stone" start="0.5" end="1" />
     <tiles id="grass" y="0" />
     <tiles id="blackstone" y="11" />
 
-    <structure id="wyrm_tales_cave_entrance" x="1" y="1"/>
-
-    <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
+    <structure id="tales_wyrm_tunnel" x="1" y="1">
+      <teleport area="wyrm_tales.main" x="1" y="0" allowReturn="false"/>
+    </structure>
+    <structure id="WTdockhouse"/>
+    <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock" />
     <shore x="32" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
 
     <objects id="tree" y="-1" startX="4" endX="30" minDist="6" maxDist="9" array="trees" />
@@ -41,8 +44,14 @@
     </objects>
     <init><runAreaLoad /></init>
     <onLoad>
-      <!-- <run procedure="farming.dock" if="area.getStructureById('WTdockhouse') == null"/> -->
+      <structure id="tales_wyrm_tunnel" x="1" y="1" if="area.getStructureById('tales_wyrm_tunnel') == null">
+        <teleport area="wyrm_tales.main" x="1" y="0" allowReturn="false"/>
+      </structure>
+      <structure id="WTdockhouse" if="area.getStructureById('WTdockhouse') == null"/>
       <!-- <object id="WTfisherman.boat" x="-4" if="area.getObject('WTfisherman.boat') == null"/> -->
+      <tile id="seagull" animation="seagull.walk" x="random()*5" />
+			<tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />
+			<tile id="seagull" animation="seagull.fly" x="-random()*5-1" y="-4" />
       <tile id="redbreast" type="bird" x="random()*8" fromX="0" toX="32" />
       <tile id="redbreast" type="bird" x="8+random()*8" fromX="0" toX="32" />
       <tile id="redbreast" type="bird" x="16+random()*8" fromX="0" toX="32" />
