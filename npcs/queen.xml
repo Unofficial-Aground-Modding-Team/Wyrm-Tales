@@ -47,9 +47,9 @@
     <section if="player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice')">
       <dialogue text="Good. Very good."/>
       <action>
-        wyrmUpgrade('weapon',player,'wyrm_weapon1');
-        wyrmUpgrade('armor',player,'wyrm_armor1');
-        wyrmUpgrade('pickaxe',player,'wyrm_drill1');
+        wyrmUpgrade('wyrm_weapon1');
+        wyrmUpgrade('wyrm_armor1');
+        wyrmUpgrade('wyrm_drill1');
       </action>
       <complete quest="tales_sacrifice" />
     </section>

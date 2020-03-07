@@ -123,6 +123,9 @@
       </section>
       <appendArea id="sea_floor" if="area.getObject('seaweed') == null"><params area_left="-240" area_right="280" area_width="96" area_height="96" /></appendArea>
       <music id="wyrm_tales" seconds="1"/>
+      <action>
+        player.prevLocation = null;
+      </action>
   </onLoad>
 
 
