@@ -1,5 +1,5 @@
 <scene id="wyrm_tales">
-    <show id="intro">
+  <show id="intro">
     <music id="Cutscene9"/>
     <layer id="black" />
     <dialogue text="Welcome, my Child."/>

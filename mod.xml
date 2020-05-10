@@ -10,7 +10,8 @@
       <entry player="wyrm.tales" id="wyrm_tales" area="wyrm_tales.main" x="9" y="2" name="entry.wyrm_player" description="entry.wyrm_player_desc" >
 
       </entry>
-      <include id="haxe.xml"/>
+      <include id="npcs/scenes.xml"/>
+      <!-- <include id="haxe.xml"/> -->
       <!-- <include id="anti_wyrms_plus.xml"/> -->
       <include id="music.xml" />
       <include id='items/items.xml'/>

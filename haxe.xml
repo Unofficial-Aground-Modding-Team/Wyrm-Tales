@@ -5,6 +5,16 @@
     if (!getFlag(flag)){setFlag(flag,true);}
     }
   </action>
+  <action>
+    // c = getContainer();
+    // a = new com.davidmaletz.controls.ClickableWindow(c,new com.davidmaletz.tiles.TileDrawable(Tile.get("nav.bg.star")),true,false,false);
+    WND = {}
+    function showWindow(){
+    }
+    function closeWindow(){
+    try{WND.instance.destroy();}catch(e:Dynamic){trace(e);}
+    }
+  </action>
   <data type="navMap">
     //this.id = this.xml.get("id");
     this.bg = this.xml.get("bg");
@@ -37,8 +47,6 @@
       var bgm = data.bgm;
       var areas = data.areas;
 
-      evalXml('&lt;show id="back" type="tile" tile="'+bg+'" animation="'+bg_anim+'" renderer="static" x="0" y="0" fps="10" modal="true"/>')
-      for (o in areas){if o
     </action>
   </procedure>
   <!-- addPress(function(e){trace(e.key);}) -->

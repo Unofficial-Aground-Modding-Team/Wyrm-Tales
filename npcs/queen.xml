@@ -8,15 +8,11 @@
     }
 
     function wyrmUpgrade(item){
-      try{throw
-      var player=getLocalPlayer();
       var slot = getItem(item).xml.get('slot');
-      var _slot = player.equipment.get(slot);
-      var name = player.equipment.get(slot).get().getNameStr();
-      player.equipment.forceEquip(slot, player, getItem(item).asItem());
+      var _slot = getLocalPlayer().equipment.get(slot);
+      var name = getLocalPlayer().equipment.get(slot).get().getNameStr();
+    getLocalPlayer().equipment.forceEquip(slot, player, getItem(item).asItem());
       _slot.get().setName(name);
-      }
-      catch(e:Dynamic){trace('Upgrade Error' + e);}
     }
 
     function getWyrmQuest(player){
@@ -86,14 +82,19 @@
     <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
       <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
     </section>
+    <run procedure="queen.tips"/>
+  </choose>
+  <stop/>
+  </procedure>
+  <procedure id="queen.tips">
     <group>
       <dialogue section="wyrm_queen" id="tip1" speaker='this' />
       <dialogue section="wyrm_queen" id="tip2" speaker='this' />
       <dialogue section="wyrm_queen" id="tip3" speaker='this' />
       <dialogue section="wyrm_queen" id="tip4" speaker='this' />
     </group>
-  </choose>
   </procedure>
+
   <quest id="tales_sacrifice" exp="50" giver="npc_wyrm_queen">
     <item id="dragonblood" count="5"/>
   </quest>
@@ -103,11 +104,6 @@
   </quest>
   <quest id="tales_farming" exp="100" giver="npc_wyrm_queen">
     <script id="player.hasItem('wheat_seed') && player.hasItem('sugar_seed') && player.hasItem('orchard_seed') && player.hasItem('cotton_seed') && player.hasItem('rice_seed')" name="quest>gather_seeds" tile="tree_seed.ico"/>
-    <!-- <item id="wheat_seed"/>
-    <item id="sugar_seed"/>
-    <item id="orchard_seed"/>
-    <item id="cotton_seed"/>
-    <item id="rice_seed"/> -->
     <item id="plant_gem" hidden="true"/>
   </quest>
   <quest id="tales_spirit_upgrade" exp="100" give="npc_wyrm_queen">

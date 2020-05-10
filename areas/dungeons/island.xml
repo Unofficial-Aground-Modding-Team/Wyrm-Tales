@@ -10,6 +10,7 @@
       <teleport area="wyrm_tales.main" x="1" y="0" allowReturn="false"/>
     </structure>
     <structure id="WTdockhouse"/>
+    <npc id="WTfisherman.cat" x="5"/>
     <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock" />
     <shore x="32" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
 
