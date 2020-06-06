@@ -20,11 +20,11 @@
 		function hasFish(?fish){
 		var player = getLocalPlayer();
 		if (player.hasItem('toothfish') || player.hasItem('rockfish') || player.hasItem('coral_cod')){
-		return fish != null ? player.hasItem(fish) : true;
+			return fish != null ? player.hasItem(fish) : true;
 		}else return false;
 		}
 		function isFish(fish){
-		return (fish == 'toothfish' || fish == 'rockfish' || fish == 'coral_cod');
+			return (fish == 'toothfish' || fish == 'rockfish' || fish == 'coral_cod');
 		}
 	</action>
 	<npc id="WTfisherman.cat" tile="cat" animation="cat" stopForPlayer="hasFish()" speed="1">
