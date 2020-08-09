@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <mod>
-    <name>Wyrm Tales</name>
-    <description>Wyrms!</description>
-    <author>Etrotta & Apprentice Alchemist</author>
-    <version>Beta</version>
-    <loadAfter>Full Version</loadAfter>
-    <loadAfter>wyrms plus</loadAfter>
-    <init>
-      <entry player="wyrm.tales" id="wyrm_tales" area="wyrm_tales.main" x="9" y="2" name="entry.wyrm_player" description="entry.wyrm_player_desc" >
-
-      </entry>
-      <include id="npcs/scenes.xml"/>
-      <!-- <include id="haxe.xml"/> -->
-      <!-- <include id="anti_wyrms_plus.xml"/> -->
-      <include id="music.xml" />
-      <include id='items/items.xml'/>
-      <include id='structures/structure.xml'/>
-      <include id='npcs/npc.xml'/>
-      <include id='areas/areas.xml'/>
-      <include id='player/player.xml'/>
-      <include id='lang.xml'/>
-	 </init>
+  <name>Wyrm Tales</name>
+  <description>Wyrms!</description>
+  <author>Apprentice Alchemist</author>
+  <version>0.0.0</version>
+  <loadAfter>Full Version</loadAfter>
+  <loadAfter>wyrms plus</loadAfter>
+  <init>
+    <include id="en_US.xml" includeRoot="true"/>
+    <entry player="wyrm.tales" id="wyrm_tales" area="wyrm_tales.main" x="9" y="2" name="entry.wyrm_tales" description="entry.wyrm_tales_desc"/>
+    <include id="npcs/scenes.xml"/>
+    <include id="music.xml" />
+    <include id="items/items.xml"/>
+    <include id="structures/structure.xml"/>
+    <include id="npcs/npc.xml"/>
+    <include id="areas/areas.xml"/>
+    <include id="player/player.xml"/>
+  </init>
 </mod>

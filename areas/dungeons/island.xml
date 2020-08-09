@@ -6,8 +6,8 @@
     <tiles id="grass" y="0" />
     <tiles id="blackstone" y="11" />
 
-    <structure id="tales_wyrm_tunnel" x="1" y="1">
-      <teleport area="wyrm_tales.main" x="1" y="0" allowReturn="false"/>
+    <structure id="tales_wyrm_tunnel" x="1" y="1" allowReturn="false">
+      <teleport area="wyrm_tales.main" x="3" y="0" allowReturn="false"/>
     </structure>
     <structure id="WTdockhouse"/>
     <npc id="WTfisherman.cat" x="5"/>

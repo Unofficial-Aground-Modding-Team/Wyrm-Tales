@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
   <action>
@@ -6,6 +5,7 @@
     return true;
     }
   </action>
+
   <structure id="wyrm_storehouse" width="48" height="32" image="{core}/magic1/structures/wyrm_door.png" type="storehouse" main="true" title="common.storehouse">
     <tooltip id="storehouse" />
   </structure>
@@ -13,25 +13,9 @@
   <animation id="wyrm_queen.talk" equals="wyrm_queen.idle"/>
   <npc id="wyrm_house" tile="wyrm_queen" animation="wyrm_queen" tileWidth="5" tileHeight="2.8" action="enter" stopForPlayer="false" icon="wyrm_queen.ico" indicatorX="-25" indicatorY="-10" fullHeight="true">
     <operate>
-      <section>
-
-      <menu section="common" yalign="0.5" closeable="true">
-      <choice id='talk'>
-        <!-- <run procedure="queen.tips"/> -->
-      </choice>
-      <choice id='sleep_day'>
-        <action> player.fullRestore(); </action>
-        <save sleep="true"/>
-        <stop/>
-      </choice>
-      <choice id='sleep_night'>
-        <action> player.fullRestore(); </action>
-        <save toNight="true"/>
-        <stop/>
-      </choice>
       <run procedure="wyrm_quests"/>
-    </menu>
-  </section>
+      <action>player.fullRestore();</action>
+      <save sleep="true"/>
     </operate>
   </npc>
 
@@ -95,7 +79,9 @@
         </option>
         <requirement icon="fire_gem.ico" title="item.names.fire_gem" count="player.getItemCountStorehouse('fire_gem')" of="1" />
       </tooltip>
-      <set id="into" value="'adult_dragon'" /><item id="fire_gem" count="-1" storehouse="true" /><run procedure="dragon_lair.raise_dragon" />
+      <set id="into" value="'adult_dragon'" />
+      <item id="fire_gem" count="-1" storehouse="true" />
+      <run procedure="dragon_lair.raise_dragon" />
     </listItem>
     <listItem icon="baby_dragon.ico" title="structure.tooltip.raise_into{into:[item=young_dragon]}" fail="(this.animal != null && this.animal.info.id == 'dragon')?'warning.ingredients':'warning.no_item{item:[item=dragon]}'">
       <tooltip type="requires" requires="quests.requires">
@@ -105,7 +91,9 @@
         </option>
         <requirement icon="dragonblood.ico" title="item.names.dragonblood" count="player.getItemCountStorehouse('dragonblood')" of="5" />
       </tooltip>
-      <set id="into" value="'young_dragon'" /><item id="dragonblood" count="-5" storehouse="true" /><run procedure="dragon_lair.raise_dragon" />
+      <set id="into" value="'young_dragon'" />
+      <item id="dragonblood" count="-5" storehouse="true" />
+      <run procedure="dragon_lair.raise_dragon" />
     </listItem>
     <operate>
       <section if="!getFlag('dragon_knowledge')">
@@ -116,27 +104,42 @@
   </structure>
 
   <structure id="WTgolem" width="128" height="64" tile="doorway" name="activate" animation="golem.statue">
-		<tile id="golem.statue" x="-3" y="0" />
-		<tile id="golem.statue" x="1" y="0" />
-		<operate><section if="!getFlag('WTGolemStatue') && ! getFlag('learnGolem')"><action>if (!getFlag('WTGolemStatue')){setFlag('WTGolemStatue',true);}</action><dialogue section="golem" id="wonder"/><stop/></section><set id="gem" value="'earth_gem'" /><set id="into" value="'golem.active'" /><set id="achievement" value="null" /><set id="sfx" value="null" /><run procedure="activate.gem_structure" /></operate>
-	</structure>
-	<structure id="WTgolem.active" width="128" height="64" tile="doorway" name="enter" animation="golem.statue">
-		<tile id="golem.statue" name="left" lerp="true" x="-3" y="0" />
-		<tile id="golem.statue" name="right" lerp="true" x="1" y="0" />
-		<over>
-			<lerp object="this.getTileById('left')" modal="false" x="-1" seconds="1" />
-			<lerp object="this.getTileById('right')" modal="false" x="1" seconds="1" />
-			<action>this.playSFX("rock_door", false);</action>
-		</over>
-		<out>
-			<lerp object="this.getTileById('left')" modal="false" x="0" seconds="1" />
-			<lerp object="this.getTileById('right')" modal="false" x="0" seconds="1" />
-			<action>this.playSFX("rock_door", false);</action>
-		</out>
-		<operate><teleport area="WTgolem_factory" x="2" y="6" with="ellipse" /></operate>
-	</structure>
+    <tile id="golem.statue" x="-3" y="0" />
+    <tile id="golem.statue" x="1" y="0" />
+    <operate>
+      <section if="!getFlag('WTGolemStatue') && ! getFlag('learnGolem')">
+        <action>if (!getFlag('WTGolemStatue')){setFlag('WTGolemStatue',true);}</action>
+        <dialogue section="golem" id="wonder"/>
+        <stop/>
+      </section>
+      <set id="gem" value="'earth_gem'" />
+      <set id="into" value="'golem.active'" />
+      <set id="achievement" value="null" />
+      <set id="sfx" value="null" />
+      <run procedure="activate.gem_structure" />
+    </operate>
+  </structure>
+  <structure id="WTgolem.active" width="128" height="64" tile="doorway" name="enter" animation="golem.statue">
+    <tile id="golem.statue" name="left" lerp="true" x="-3" y="0" />
+    <tile id="golem.statue" name="right" lerp="true" x="1" y="0" />
+    <over>
+      <lerp object="this.getTileById('left')" modal="false" x="-1" seconds="1" />
+      <lerp object="this.getTileById('right')" modal="false" x="1" seconds="1" />
+      <action>this.playSFX("rock_door", false);</action>
+    </over>
+    <out>
+      <lerp object="this.getTileById('left')" modal="false" x="0" seconds="1" />
+      <lerp object="this.getTileById('right')" modal="false" x="0" seconds="1" />
+      <action>this.playSFX("rock_door", false);</action>
+    </out>
+    <operate>
+      <teleport area="WTgolem_factory" x="2" y="6" with="ellipse" />
+    </operate>
+  </structure>
 
   <structure id='tales_wyrm_tunnel' width='16' height='16' image="{core}/magic1/structures/wyrm_tunnel.png" name="enter" type="door" allowReturn="true">
-    <afterTeleport><dig x="player.tile_x" y="player.tile_y" speed="2" /></afterTeleport>
+    <afterTeleport>
+      <dig x="player.tile_x" y="player.tile_y" speed="2" />
+    </afterTeleport>
   </structure>
 </data>

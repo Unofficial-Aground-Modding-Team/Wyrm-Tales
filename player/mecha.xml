@@ -1,0 +1,78 @@
+<data>
+    <layers id="mecha.wurm" width="16" height="16" cols="4" rows="5">
+        <layer tile="steel_wyrm">
+            <frame x="0" count="17"/>
+        </layer>
+    </layers>
+    <animation id="steel_wyrm.sleep" equals='steel_wyrm.idle'/>
+    <animation id="steel_wyrm.walk.sweat" equals='steel_wyrm.walk'/>
+    <animation id="steel_wyrm.walk.heavy" equals='steel_wyrm.walk'/>
+    <animation id="steel_wyrm.swim" equals='steel_wyrm.walk'/>
+    <animation id="steel_wyrm.mine" equals='steel_wyrm.dig'/>
+    <animation id="steel_wyrm.mine2" equals='steel_wyrm.mine'/>
+    <animation id="steel_wyrm.mine3" equals='steel_wyrm.mine'/>
+    <animation id="steel_wyrm.ride" equals='steel_wyrm.idle'/>
+    <animation id="steel_wyrm.beard.idle">
+        <frame visible="false"/>
+    </animation>
+    <player id='mecha.wyrm.tales' layers="mecha.wurm" health="200" stamina="300" maxLevel="30" speed="10" talk_sfx="talking7" animation="steel_wyrm">
+        <skill id="WThealth" maxLevel="20" />
+        <skill id="WTstamina" maxLevel="20" />
+        <skill id="WTweight" maxLevel="20" />
+        <skill id="WTcritical" maxLevel="10" />
+        <skill id="WTevasion" maxLevel="10" />
+        <skill id="WTmine_speed" maxLevel="5" />
+        <skill id="WTsight" maxLevel="3" />
+        <skill id="WTattack" maxLevel="3" />
+        <skill id="WTdefense" maxLevel="3" />
+        <skill id="WTcut" maxLevel="3" />
+        <skill id="WTrange" maxLevel="5" />
+        <skill id="WTtrap" maxLevel="3" />
+        <skill id="WTbargaining" maxLevel="5" />
+        <skill id="WTfishing" maxLevel="3" />
+        <skill id="WToxygen" maxLevel="8" />
+        <skill id="WTspellcast" maxLevel="5" />
+        <stat id="health" />
+        <stat id="stamina" />
+        <stat id="regen_health" flag="never_set" />
+        <stat id="regen_stamina" flag="never_set" />
+        <stat id="weight" />
+        <stat id="critical" />
+        <stat id="evasion" />
+        <stat id="speed" />
+        <stat id="endurance" />
+        <stat id="mine_speed" />
+        <stat id="sight" />
+        <stat id="attack" />
+        <stat id="defense" />
+        <stat id="cut" />
+        <stat id="mine" />
+        <stat id="range" flag="WT_range"/>
+        <stat id="trap" flag="WT_trap" />
+        <stat id="fishing" flag="WT_fish" />
+        <stat id="oxygen" flag="show_oxygen" />
+        <stat id="bargaining" flag="WT_bargain" />
+        <stat id="spellcast" flag="WT_spellcast" />
+        <stat id="reset" flag="never_set" />
+        <stat id="timer" flag="never_set" />
+        <stat id="regen_power" flag="never_set" />
+        <stat id="light" flag="never_set" />
+
+        <slot id="weapon"/>
+        <slot id="shield"/>
+        <slot id="pickaxe"/>
+        <slot id="armor"/>
+
+        <slot id="head" flag="WT_head" />
+        <slot id="back" flag="WT_back" />
+
+        <slot id="familiar"/>
+
+        <light tile="light.small" color="888888" />
+        <!-- <color id="wyrm" /> -->
+        <handleSecond>
+            <run procedure="wyrm.handleSecond"/>
+            <run procedure="player.handleSecond"/>
+        </handleSecond>
+    </player>
+</data>

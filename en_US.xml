@@ -1,0 +1,94 @@
+<lang id="en_US">
+  <section id="system">
+    <text id="wyrm_tales">Unoiks 106</text>
+  </section>
+  <section id="system.desc">
+    <text id="wyrm_tales">G-type star 30 light years from Earth.\nOne confirmed exoplanet.</text>
+  </section>
+  <section id="system.planet">
+    <text id="wyrm_tales">Unoiks 106a</text>
+  </section>
+  <section id="system.planet.desc">
+    <text id="wyrm_tales">Considered for the Sanctuary Project, but rejected because of the aggressive local fauna and flora.</text>
+  </section>
+  <section id="item.names">
+    <text id="wyrm_weapon0">Wyrm Fang</text>
+    <text id="wyrm_drill0">Wyrm Teeth</text>
+    <text id="wyrm_body0">Wyrm Body</text>
+    <text id="wyrm_weapon1">Wyrm Fang</text>
+    <text id="wyrm_drill1">Wyrm Teeth</text>
+    <text id="wyrm_body1">Wyrm Body</text>
+    <text id="wyrm_weapon2">Wyrm Fang</text>
+    <text id="wyrm_drill2">Wyrm Teeth</text>
+    <text id="wyrm_body2">Wyrm Body</text>
+    <text id="wyrm_weapon3">Wyrm Fang</text>
+    <text id="wyrm_drill3">Wyrm Teeth</text>
+    <text id="wyrm_body3">Wyrm Body</text>
+    <text id='tales_light_buddy'>Light Orb</text>
+    <text id='WTwyrm'>Wyrm</text>
+  </section>
+  <section id='item.descriptions'>
+    <!-- <text id='wyrm0'>He claims that he used to be Arsonist Mc Stabby's best friend.</text> -->
+  </section>
+  <section id="entry">
+    <text id="wyrm_tales">Wyrm Tales</text>
+    <text id="wyrm_tales_desc">Play as a wyrm!</text>
+  </section>
+  <section id="create.character">
+    <text id="wyrm">Wyrm Color</text>
+  </section>
+  <section id="npc">
+    <text id="wyrm.miner.nnpc">Wyrms</text>
+    <text id="wyrm_tutorial_npc">Wyrm</text>
+    <text id="npc_wyrm_queen">Wyrm Queen</text>
+    <text id="enter">Enter</text>
+  </section>
+  <section id="common">
+    <text id="talk">Talk</text>
+    <text id="sleep_day">Sleep until Day</text>
+    <text id="sleep_night">Sleep until Night</text>
+  </section>
+  <section id='actions'>
+    <text id='talk'>Talk</text>
+    <text id='modify'>Modify</text>
+  </section>
+  <section id="world">
+    <text id="wyrm_tales.main">Wyrm Island</text>
+    <text id="golem_cave">Golem Cave</text>
+    <text id="wyrm_tales.farming">Farming</text>
+  </section>
+  <section id='familiar'>
+    <text id='adventure'>Let's have some adventures!</text>
+  </section>
+  <section id='golem'>
+    <text id='wonder'>Are these. . . Golem statues? I should probably tell the queen about this. . . </text>
+  </section>
+  <section id="wyrm_queen">
+    <text id="sacrifice1">Defeat some enemy wyrms, and bring me their blood.</text>
+    <text id="golem_learn1">What do you say? Two giant golem statues? That means. . . the golems are still alive!</text>
+    <text id="tip1">Dragonblood is one of the best ways to restore your stamina and health when you can't reach me.</text>
+    <text id="tip2">Killing enemy wyrms is the best way to get dragonblood.</text>
+    <text id="tip3">Don't stay out at night. It's dangerous.</text>
+    <text id="tip4">Remember. If you find something, tell me about it.</text>
+    <text id="golem_mine1">My scouts have found two new areas. I need you to explore them.</text>
+    <!-- <text id="golem_mine2">The first one is a regenerating cave. The second one is an island that seems to be inhabited by a human. You should do two things when you arrive there : First of all collect some seeds, and second make contact with the human.</text> -->
+    <text id="golem_mine2">The first one is a regenerating cave, the second one is and island on which you should go gather some materials.</text>
+    <text id="golem_mine_complete">You found a spirit gem?! This is incredible! You need to find more of them!</text>
+    <text id="tales_farming_complete">You found a plant gem! Very good. I can use it to make a vine copse seed. \nWhat do you say? A dock of some kind? Hmm... Maybe there are still humans here. They might be able to help us. . .</text>
+  </section>
+  <section id="quests">
+    <text id='tales_sacrifice'>Sacrifice</text>
+    <text id='golem_mine'>Golem Cave</text>
+    <text id='tales_farming'>Farming</text>
+    <text id="gather_seeds">Gather Seeds</text>
+  </section>
+  <section id="quest.description">
+    <text id='tales_sacrifice'>wants the blood of our enemies.</text>
+    <text id='tales_upgrade1'> says that she will make me strong.</text>
+    <text id='golem_mine'>wants me to explore a cave full of golems.</text>
+    <!-- <text id='tales_farm'>Find some seeds and the [item=farm_blueprint] at a new island.</text> -->
+    <text id='tales_farming'>wants me to gather some seeds.</text>
+    <text id='tales_upgrade2'>wants to make me stronger.</text>
+    <text id='tales_upgrade3'>The Queen is going to make me as strong as she can!</text>
+  </section>
+</lang>

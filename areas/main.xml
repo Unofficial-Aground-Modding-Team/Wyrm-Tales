@@ -1,29 +1,31 @@
 <data>
-  <area id="wyrm_tales.main" background="magic2" width="96" height="80" planet="wyrm_tales" >
-      <tiles id="dirt" start="0" end="0.33" />
-      <tiles id="stone" start="0.33" end="1" />
-      <tiles id="blackstone" y="80" />
+  <area id="wyrm_tales.main" background="magic2" width="96" height="80" planet="wyrm_tales">
+    <tiles id="dirt" start="0" end="0.33" />
+    <tiles id="stone" start="0.33" end="1" />
+    <tiles id="blackstone" y="80" />
 
-      <shore x="0" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
-      <shore x="96" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
-      <appendArea id="sea_floor"><params area_left="-240" area_right="280" area_width="96" area_height="80" /></appendArea>
+    <shore x="0" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
+    <shore x="96" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
+    <appendArea id="sea_floor">
+      <params area_left="-240" area_right="280" area_width="96" area_height="80" />
+    </appendArea>
 
-      <objects id="wyrm" startX="0" endX="94" minDist="10" maxDist="40" startY="10" endY="20" count="4"/>
-      <spawner id="wyrm" time="500" count="20" fromX="0" toX="94" fromY="1" toY="30" />
-      <spawner id="shadow_cat" time="1000" count="10" fromX="3" toX="95" fromY="-1" toY="-1" enabled="isNight()" />
-      <ore id="coal" start="0.0" end="0.9" percent="0.075" tile="dirt" />
-      <ore id="alter_gem" start="0.0" end="0.9" percent="0.01" tile="dirt" />
-      <ore id="iron" start="0.0" end="0.9" percent="0.04" tile="dirt" />
-      <ore id="coal" start="0.0" end="0.9" percent="0.1" tile="stone" />
-      <ore id="alter_gem" start="0.3" end="0.9" percent="0.05" tile="stone" />
-      <ore id="iron" start="0.0" end="0.9" percent="0.1" tile="stone" />
-      <ore id="blood_gem" start="0.0" end="0.9" percent="0.01" tile="stone" />
+    <objects id="wyrm" startX="0" endX="94" minDist="10" maxDist="40" startY="10" endY="20" count="4"/>
+    <spawner id="wyrm" time="500" count="20" fromX="0" toX="94" fromY="1" toY="30" />
+    <spawner id="shadow_cat" time="1000" count="10" fromX="3" toX="95" fromY="-1" toY="-1" enabled="isNight()" />
+    <ore id="coal" start="0.0" end="0.9" percent="0.075" tile="dirt" />
+    <ore id="alter_gem" start="0.0" end="0.9" percent="0.01" tile="dirt" />
+    <ore id="iron" start="0.0" end="0.9" percent="0.04" tile="dirt" />
+    <ore id="coal" start="0.0" end="0.9" percent="0.1" tile="stone" />
+    <ore id="alter_gem" start="0.3" end="0.9" percent="0.05" tile="stone" />
+    <ore id="iron" start="0.0" end="0.9" percent="0.1" tile="stone" />
+    <ore id="blood_gem" start="0.0" end="0.9" percent="0.01" tile="stone" />
 
-      <spreadTiles x="4" y="1" eval="'markings'+randInt(1,9)" layer="back" on="dirt" count="50" />
-      <appendArea id="magic1.floating" offsetX="70" offsetY="-7" />
+    <spreadTiles x="4" y="1" eval="'markings'+randInt(1,9)" layer="back" on="dirt" count="50" />
+    <!-- <appendArea id="magic1.floating" offsetX="70" offsetY="-7" /> -->
 
-      <init>
-        <section if="player.info.id == 'wyrm.tales' && !getFlag('WT_Intro')">
+    <init>
+      <section if="player.info.id == 'wyrm.tales' && !getFlag('WT_Intro')">
         <equip id="wyrm_weapon0" fromInventory="false"/>
         <equip id="wyrm_drill0" fromInventory="false"/>
         <equip id="wyrm_body0" fromInventory="false"/>
@@ -35,24 +37,21 @@
           player.renderer.alpha = 0;
           wyrm_queen = area.getStructureById('wyrm_house');
         </action>
-        <!-- <play object="wyrm_queen" animation="over"/> -->
         <lerp object="player" seconds="1" alpha="1" modal="true"/>
-        <!-- <action>setFlag('WT_pickaxe',true)</action> -->
-        </section>
-      </init>
-      <fishing>
-        <loot id='cocoon' p='1'/>
-      </fishing>
-      <onLoad>
-        <weather type="snow" height="1" />
-        <section if="player.info.id == 'wyrm.tales' && !getFlag('wyrm_tales')">
+      </section>
+    </init>
+    <fishing>
+      <loot id='cocoon' p='1'/>
+    </fishing>
+    <onLoad>
+      <weather type="snow" height="1" />
+      <section if="player.info.id == 'wyrm.tales' && !getFlag('wyrm_tales')">
         <objects id="wyrm.miner.nnpc" startX="1" endX="30" minDist="10" maxDist="15" />
         <!-- <objects id="wyrm.farmer.nnpc" startX="1" endX="30" minDist="10" maxDist="15" /> -->
         <!-- <objects id="wyrm.builder.nnpc" startX="1" endX="30" minDist="10" maxDist="15" /> -->
         <!-- <objects id="wyrm.hunter.nnpc" startX="1" endX="30" minDist="10" maxDist="15" /> -->
         <structure id="wyrm_storehouse" x="3" y="2"/>
         <object id="wyrm_house" x="9" y="2"/>
-        <!-- <structure id="wyrm_quest" x="7" y="2"/> -->
         <action>
           setFlag('wyrm_tales', true);
           for (a in 1...96) { mine(a,0); setBack(a,0,"grass"); }
@@ -62,43 +61,17 @@
           for (a in 8...14) for (b in 0...4) setBack(a,b,'bedrock');
         </action>
         <section if="area.getStructureById('dragon_lair_WT') == null">
-  				<structure id="dragon_lair3" x="68" y="0" /><action>
+          <structure id="dragon_lair_WT" x="68" y="0" />
+          <action>
   					for(x in 69...76){setBack(x, -6, "stone"); area.setLit(x, -6);} for(x in 68...77){setBack(x, -5, "stone"); area.setLit(x, -5);}
   					for(y in -4...0) for(x in 68...78){setBack(x, y, "stone"); area.setLit(x, y);} setBack(78, -1, "stone"); area.setLit(78, -1);
-  				</action>
-  			</section>
+          </action>
+        </section>
       </section>
-      <appendArea id="sea_floor" if="area.getObject('seaweed') == null"><params area_left="-240" area_right="280" area_width="96" area_height="96" /></appendArea>
+      <appendArea id="sea_floor" if="area.getObject('seaweed') == null">
+        <params area_left="-240" area_right="280" area_width="96" area_height="96" />
+      </appendArea>
       <music id="wyrm_tales" seconds="1"/>
-      <action>
-        player.prevLocation = null;
-      </action>
-  </onLoad>
-
-
-  </area>
-
-
-  <!-- <area id="wyrm_tales.tutorial" width="32" height="10" shouldLight='false'>
-    <object id="wyrm_tutorial_npc" x='10' y='8' />
-    <object id="wyrm_tutorial_familiar" x='15' y='8' />
-    <tiles id="magic1.dirt" start="0" end='1'/>
-    <mine start='0' end='1'/>
-    <tiles x="0" id="blackstone"/>
-    <tiles x="31" id="blackstone"/>
-    <tiles y="0" id="blackstone"/>
-    <tiles y="9" id="blackstone"/>
-    <init><runAreaLoad /></init>
-    <onLoad>
-      <music id='minigame_platformer'/>
-      <section if="player.info.id == 'wyrm.tales' && player.equipment.get('weapon').get() == null">
-        <equip id="wyrm_weapon0" fromInventory="false"/>
-        <equip id="wyrm_drill0" fromInventory="false"/>
-        <equip id="wyrm_body0" fromInventory="false"/>
-        <action>
-          for (x in 0...31) for (y in 0...10) area.setLit(x,y);
-        </action>
-      </section>
     </onLoad>
-  </area> -->
+  </area>
 </data>

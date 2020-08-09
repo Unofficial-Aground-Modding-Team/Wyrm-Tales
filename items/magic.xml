@@ -1,3 +1,20 @@
 <data>
+    <item id="magic_wyrm_base" type="none" cost="0" weight="0" icon="magic_wyrm.ico" unequip="false" underwater="true"/>
+    <animation id="equipment.magic_wyrm_weapon" count='4' repeat="1"/>
 
+    <item id="magic_wyrm_weapon" sfx="magicwyrm_attack" slot="weapon" attack="6" cut="2" knockback="5" stamina="4" extends="magic_wyrm_base" equip_anim="equipment.magic_wyrm_weapon" />
+    <item id="magic_wyrm_drill" loop="wyrm_drill" slot="pickaxe" mine="4" breakPower="4" extends="magic_wyrm_base"/>
+    <item id="magic_wyrm_body" slot="armor" defense="4" capacity="75" extends="magic_wyrm_base">
+        <equipCost health="-4" stamina="-8" />
+    </item>
+    <procedure id="wyrm_tales_magic">
+        <action>
+        id = "magic.wyrm.tales";
+        </action>
+        <run procedure="changePlayerForm"/>
+        <equip id="magic_wyrm_weapon" fromInventory="false"/>
+        <equip id="magic_wyrm_gun" fromInventory="false"/>
+        <equip id="magic_wyrm_drill" fromInventory="false"/>
+        <equip id="magic_wyrm_body" fromInventory="false"/>
+    </procedure>
 </data>

@@ -2,16 +2,14 @@
 <data>
 
   <action>
-    function wyrmModifyEquipment(player,slot,modifier){
-      var item = player.equipment.get(slot).get();
+    function wyrmModifyEquipment(slot,modifier){
+      var item = getLocalPlayer().equipment.get(slot).get();
       item.setName(Item.setParameter(item.getNameStr(), "m", modifier));
     }
 
     function wyrmUpgrade(item){
-      var slot = getItem(item).xml.get('slot');
-      var _slot = getLocalPlayer().equipment.get(slot);
-      var name = getLocalPlayer().equipment.get(slot).get().getNameStr();
-    getLocalPlayer().equipment.forceEquip(slot, player, getItem(item).asItem());
+      var slot = getItem(item).xml.get('slot'), _slot = getLocalPlayer().equipment.get(slot), name = getLocalPlayer().equipment.get(slot).get().getNameStr();
+      getLocalPlayer().equipment.forceEquip(slot,getLocalPlayer(), getItem(item).asItem());
       _slot.get().setName(name);
     }
 
@@ -36,55 +34,55 @@
   <procedure id="wyrm_quests">
     <set id="this" value="area.getNPC('wyrm_house')"/>
     <choose>
-    <section if="!player.hasQuest('tales_sacrifice')">
-      <dialogue section="wyrm_queen" id="sacrifice1" speaker="this"/>
-      <quest id="tales_sacrifice"/>
-    </section>
-    <section if="player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice')">
-      <dialogue text="Good. Very good."/>
-      <action>
+      <section if="!player.hasQuest('tales_sacrifice')">
+        <dialogue section="wyrm_queen" id="sacrifice1" speaker="this"/>
+        <quest id="tales_sacrifice"/>
+      </section>
+      <section if="player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice')">
+        <dialogue text="Good. Very good."/>
+        <action>
         wyrmUpgrade('wyrm_weapon1');
         wyrmUpgrade('wyrm_armor1');
         wyrmUpgrade('wyrm_drill1');
-      </action>
-      <complete quest="tales_sacrifice" />
-    </section>
-    <section if="!player.hasQuest('golem_mine') && !player.hasQuest('tales_farming') && player.questComplete('tales_sacrifice')">
-      <dialogue section="wyrm_queen" id="golem_mine1"/>
-      <dialogue section="wyrm_queen" id="golem_mine2"/>
-      <quest id="golem_mine"/>
-      <quest id="tales_farming"/>
-      <structure id="tales_wyrm_tunnel" x="1" y="0">
-        <teleport area="wyrm_tales.golem_cave" x="32" y="32" allowReturn="true" />
-      </structure>
-      <structure id="tales_wyrm_tunnel" x="3" y="0">
-        <teleport area="wyrm_tales.farming" x="1" y="1" allowReturn="true" />
-      </structure>
-      <dialogue text="Here, take this light orb to help you."/>
-      <action>
+        </action>
+        <complete quest="tales_sacrifice" />
+      </section>
+      <section if="!player.hasQuest('golem_mine') && !player.hasQuest('tales_farming') && player.questComplete('tales_sacrifice')">
+        <dialogue section="wyrm_queen" id="golem_mine1"/>
+        <dialogue section="wyrm_queen" id="golem_mine2"/>
+        <quest id="golem_mine"/>
+        <quest id="tales_farming"/>
+        <structure id="tales_wyrm_tunnel" x="1" y="0">
+          <teleport area="wyrm_tales.golem_cave" x="32" y="32"/>
+        </structure>
+        <structure id="tales_wyrm_tunnel" x="3" y="0">
+          <teleport area="wyrm_tales.farming" x="1" y="1"/>
+        </structure>
+        <dialogue text="Here, take this orb of light to help you."/>
+        <action>
         if (!getFlag("WT_light_buddy")){
           setFlag('WT_light_buddy',true);
         }
-      </action>
-      <item id="tales_light_buddy"/>
-      <equip id="tales_light_buddy"/>
-    </section>
-    <section if="player.canCompleteQuest('golem_mine')">
-      <dialogue section="wyrm_queen" id="golem_mine_complete"/>
-      <complete quest="golem_mine" useResources="false"/>
-    </section>
-    <section if="player.canCompleteQuest('tales_farming')">
-      <dialogue section="wyrm_queen" id="tales_farming_complete"/>
-      <complete quest="tales_farming" useResources="false"/>
-      <item id="plant_gem" count="-1" hidden="true"/>
-      <item id="growth_seed"/>
-    </section>
-    <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
-      <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
-    </section>
-    <run procedure="queen.tips"/>
-  </choose>
-  <stop/>
+        </action>
+        <item id="tales_light_buddy"/>
+        <equip id="tales_light_buddy"/>
+      </section>
+      <section if="player.canCompleteQuest('golem_mine')">
+        <dialogue section="wyrm_queen" id="golem_mine_complete"/>
+        <complete quest="golem_mine" useResources="false"/>
+      </section>
+      <section if="player.canCompleteQuest('tales_farming')">
+        <dialogue section="wyrm_queen" id="tales_farming_complete"/>
+        <complete quest="tales_farming" useResources="false"/>
+        <item id="plant_gem" count="-1" hidden="true"/>
+        <item id="growth_seed"/>
+      </section>
+      <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
+        <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
+      </section>
+      <run procedure="queen.tips"/>
+    </choose>
+    <stop/>
   </procedure>
   <procedure id="queen.tips">
     <group>

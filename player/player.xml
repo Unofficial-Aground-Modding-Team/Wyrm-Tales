@@ -1,4 +1,6 @@
 <data>
   <include id='wyrm.xml'/>
+  <include id="magic.xml"/>
+  <include id="mecha.xml"/>
   <include id='familiar.xml'/>
 </data>
