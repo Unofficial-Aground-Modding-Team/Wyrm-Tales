@@ -63,8 +63,8 @@
   <section id='golem'>
     <text id='wonder'>Are these. . . Golem statues? I should probably tell the queen about this. . . </text>
   </section>
-  <section id="hive">
-    <text id="sacrifice1">Defeat some enemy wyrms, and bring their blood to your queen.</text>
+  <section id="wyrm_queen">
+    <text id="sacrifice1">Defeat some enemy wyrms, and bring me their blood</text>
     <text id="golem_learn1">What do you say? Two giant golem statues? That means. . . the golemech still lives.</text>
     <text id="golem_learn2">If he still lives then hope might not be lost... yet.</text>
     <text id="tip1">Dragonblood is one of the best ways to restore your stamina and health when you can't reach me.</text>

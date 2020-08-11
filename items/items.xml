@@ -2,7 +2,7 @@
   <include id="wyrm.xml"/>
   <include id="magic.xml"/>
   <include id="tech.xml"/>
-  <!-- <include id="magne.xml"/> -->
+
   <animation id="light_buddy.idle" x="4" count="8" />
   <animation id="equipment.tales_light_buddy.idle">
     <frame visible="false"/>
