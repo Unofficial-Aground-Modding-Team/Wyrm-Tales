@@ -15,9 +15,7 @@
 		<!-- <ore id="lava" start="0.7" end="0.8" percent="1" tile="stone" /> -->
 		<objects id="golem" start="0.0" end="1.0" percent="0.00375" tile="stone" />
 		<!-- <objects id="gold_golem" start="0.45" end="0.55" percent="0.00075" /> -->
-		<structure id="tales_wyrm_tunnel" x="32" y="32">
-			<teleport id="wyrm_tales.main" x="1" y="0" allowReturn="false"/>
-		</structure>
+		<structure id="tales_wyrm_tunnel" x="32" y="32"/>
 		<mine x="32" y="32" light="3" />
 		<mine x="33" y="32" light="3" />
 		<mine x="32" y="31" light="3" />

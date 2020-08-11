@@ -53,7 +53,7 @@
         <quest id="golem_mine"/>
         <quest id="tales_farming"/>
         <structure id="tales_wyrm_tunnel" x="1" y="0">
-          <teleport area="wyrm_tales.golem_cave" x="32" y="32"/>
+          <teleport area="wyrm_tales.golem_cave" x="32" y="32" allowReturn="true"/>
         </structure>
         <structure id="tales_wyrm_tunnel" x="3" y="0">
           <teleport area="wyrm_tales.farming" x="1" y="1"/>

@@ -73,6 +73,8 @@
 <skill id="WToxygen" name="stats.oxygen" start_cost="10" cost_per_level="5" flag="show_oxygen">
   <stat id="oxygen" value="5" />
 </skill>
+<procedure id="wyrm.handleSecond">
+</procedure>
     <player id='wyrm.tales' layers="wurm" health="100" stamina="200" maxLevel="30" speed="10" talk_sfx="talking7" animation='wyrm'>
       <skill id="WThealth" maxLevel="20" />
       <skill id="WTstamina" maxLevel="20" />

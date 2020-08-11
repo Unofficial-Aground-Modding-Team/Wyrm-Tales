@@ -9,7 +9,7 @@
     <text id="wyrm_tales">Unoiks 106a</text>
   </section>
   <section id="system.planet.desc">
-    <text id="wyrm_tales">Considered for the Sanctuary Project, but rejected because of the aggressive local fauna and flora.</text>
+    <text id="wyrm_tales">Considered for the Sanctuary Project, but rejected because of the aggressive fauna.</text>
   </section>
   <section id="item.names">
     <text id="wyrm_weapon0">Wyrm Fang</text>
@@ -63,9 +63,10 @@
   <section id='golem'>
     <text id='wonder'>Are these. . . Golem statues? I should probably tell the queen about this. . . </text>
   </section>
-  <section id="wyrm_queen">
-    <text id="sacrifice1">Defeat some enemy wyrms, and bring me their blood.</text>
-    <text id="golem_learn1">What do you say? Two giant golem statues? That means. . . the golems are still alive!</text>
+  <section id="hive">
+    <text id="sacrifice1">Defeat some enemy wyrms, and bring their blood to your queen.</text>
+    <text id="golem_learn1">What do you say? Two giant golem statues? That means. . . the golemech still lives.</text>
+    <text id="golem_learn2">If he still lives then hope might not be lost... yet.</text>
     <text id="tip1">Dragonblood is one of the best ways to restore your stamina and health when you can't reach me.</text>
     <text id="tip2">Killing enemy wyrms is the best way to get dragonblood.</text>
     <text id="tip3">Don't stay out at night. It's dangerous.</text>

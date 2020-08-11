@@ -16,7 +16,7 @@
         <frame visible="false"/>
     </animation>
     <player id='magic.wyrm.tales' layers="magic.wurm" health="200" stamina="300" maxLevel="30" speed="10" talk_sfx="talking7" animation="magic_wyrm">
-        
+
         <skill id="WThealth" maxLevel="20" />
         <skill id="WTstamina" maxLevel="20" />
         <skill id="WTweight" maxLevel="20" />

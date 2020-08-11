@@ -3,7 +3,7 @@
   <name>Wyrm Tales</name>
   <description>Wyrms!</description>
   <author>Apprentice Alchemist</author>
-  <version>0.0.0</version>
+  <version>0.0.1</version>
   <loadAfter>Full Version</loadAfter>
   <loadAfter>wyrms plus</loadAfter>
   <init>

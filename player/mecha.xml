@@ -59,7 +59,7 @@
         <stat id="light" flag="never_set" />
 
         <slot id="weapon"/>
-        <slot id="shield"/>
+        <slot id="shield" renderPriority="0"/>
         <slot id="pickaxe"/>
         <slot id="armor"/>
 

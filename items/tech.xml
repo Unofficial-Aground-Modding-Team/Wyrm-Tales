@@ -4,7 +4,7 @@
     <animation id="equipment.mecha_wyrm_gun" equals="equipment.mecha_wyrm_weapon"/>
     <item id="mecha_wyrm_weapon" sfx="mecha_wyrm_attack" slot="weapon" attack="6" cut="2" knockback="5" stamina="4" extends="mecha_wyrm_base" equip_anim="equipment.mecha_wyrm_weapon"/>
     <tile id="mecha_wyrm_gun" equals="empty"/>
-    <item id="mecha_wyrm_gun" tile="empty" sfx="radioactive_bolt" delay="2" slot="shield" use="attack" attack="10" range="8" extends="mecha_wyrm_base">
+    <item id="mecha_wyrm_gun" sfx="radioactive_bolt" delay="2" slot="shield" use="attack" attack="10" range="8" extends="mecha_wyrm_base">
         <projectile tile="fireball_small" animation="fireball_small.acid" speed="3" offsetY="4" glow="true" hit_sfx="bolt_hit" knockback="5" underwater="true">
             <light tile="light.small" color="00cc00" />
         </projectile>

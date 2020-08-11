@@ -137,7 +137,7 @@
     </operate>
   </structure>
 
-  <structure id='tales_wyrm_tunnel' width='16' height='16' image="{core}/magic1/structures/wyrm_tunnel.png" name="enter" type="door" allowReturn="true">
+  <structure id='tales_wyrm_tunnel' width='16' height='16' image="{core}/magic1/structures/wyrm_tunnel.png" name="enter" type="door">
     <afterTeleport>
       <dig x="player.tile_x" y="player.tile_y" speed="2" />
     </afterTeleport>

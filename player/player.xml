@@ -3,4 +3,5 @@
   <include id="magic.xml"/>
   <include id="mecha.xml"/>
   <include id='familiar.xml'/>
+  <!-- <include id="magne.xml"/> -->
 </data>

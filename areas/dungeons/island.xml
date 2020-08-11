@@ -6,8 +6,8 @@
     <tiles id="grass" y="0" />
     <tiles id="blackstone" y="11" />
 
-    <structure id="tales_wyrm_tunnel" x="1" y="1" allowReturn="false">
-      <teleport area="wyrm_tales.main" x="3" y="0" allowReturn="false"/>
+    <structure id="tales_wyrm_tunnel" x="1" y="1">
+      <teleport area="wyrm_tales.main" x="3" y="0"/>
     </structure>
     <structure id="WTdockhouse"/>
     <npc id="WTfisherman.cat" x="5"/>
@@ -45,11 +45,8 @@
     </objects>
     <init><runAreaLoad /></init>
     <onLoad>
-      <structure id="tales_wyrm_tunnel" x="1" y="1" if="area.getStructureById('tales_wyrm_tunnel') == null">
-        <teleport area="wyrm_tales.main" x="1" y="0" allowReturn="false"/>
-      </structure>
       <structure id="WTdockhouse" if="area.getStructureById('WTdockhouse') == null"/>
-      <object id="WTfisherman.cat" if="area.getObject('WTfisherman.cat')"/>
+      <object id="WTfisherman.cat" if="area.getObject('WTfisherman.cat') == null"/>
       <!-- <object id="WTfisherman.boat" x="-4" if="area.getObject('WTfisherman.boat') == null"/> -->
       <tile id="seagull" animation="seagull.walk" x="random()*5" />
 			<tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />
