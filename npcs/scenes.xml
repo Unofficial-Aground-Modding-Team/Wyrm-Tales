@@ -1,10 +1,4 @@
 <data>
-<!-- <lang id="en_US">
-<section id="scenes">
-<text id="wts.intro1">Welcome to this world, my child.</text>
-<text id="wts.intro2">This world is dying. Magic has disapeared. You are our last hope.</text>
-</section>
-</lang> -->
   <scene id="wyrm_tales">
     <show id="intro">
       <music id="Cutscene9"/>

@@ -1,4 +1,5 @@
 <data>
+  <entry player="wyrm.tales" id="wyrm_tales" area="wyrm_tales.main" x="9" y="2" name="entry.wyrm_tales" description="entry.wyrm_tales_desc"/>
   <include id='wyrm.xml'/>
   <include id="magic.xml"/>
   <include id="mecha.xml"/>

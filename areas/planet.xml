@@ -14,6 +14,6 @@
   		<append tile="planet4.shadow" animation="single" /><frame visible="false" />
   </animation>
   <system id="wyrm_tales" bgm="voyage" x="100" y="100" available="player.info.id == 'wyrm.tales'">
-    <planet id="wyrm_tales" tile="planet4" animation="wyrm_tales.planet" offsetX="-70" offsetY="45" name="system.planet.wyrm_tales{char:a}" />
+    <planet id="wyrm_tales" tile="planet4" animation="wyrm_tales.planet" offsetX="-70" offsetY="45" name="system.planet.wyrm_tales" />
   </system>
  </data>

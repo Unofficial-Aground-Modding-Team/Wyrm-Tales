@@ -5,10 +5,10 @@
 		<operate>
 		</operate>
 	</object>
-  <structure id="WTdockhouse" width="100" height="55" image="{core}/structures/dockhouse.png" type="crafting" name="enter" spawnX="area.isWater(this.tile_x-5, this.tile_y+1)?this.tile_x-4:this.tile_x+8">
-    <recipe type="dock" />
-    <!-- <operate></operate> -->
-  </structure>
+	<structure id="WTdockhouse" width="100" height="55" image="{core}/structures/dockhouse.png" type="crafting" name="enter" spawnX="area.isWater(this.tile_x-5, this.tile_y+1)?this.tile_x-4:this.tile_x+8">
+		<recipe type="dock" />
+		<operate><stop/></operate>
+	</structure>
 
 	<npc id="WTfisherman" tile="fisherman" action="talk" talk_sfx="talking1" sleepPos="[area.getObjectById('WTfisherman.boat').tile_x/Tile.SIZE,area.getObjectById('WTfisherman.boat').tile_y]">
 		<idle class="fishing" max_difficulty="4" storeIf="getFlag('WT_fish')" />
@@ -33,16 +33,18 @@
 		<tooltip if="!hasFish()"/>
 		<operate>
 			<section if="hasFish()">
-			<quest />
-			<window type="items" title="actions.feed" filter="function(i){return isFish(i.id);}">
-		    <set id="fish" value="item.id"/>
-				<sound id="meow" />
-				<wait seconds="0.5" />
-				<item eval="fish" count="-1"/>
-				<sound id="purr" />
-				<invokeLater><action>this.idle.runFrom(player)</action></invokeLater>
-			</window>
-		</section>
+				<quest />
+				<window type="items" title="actions.feed" filter="function(i){return isFish(i.id);}">
+					<set id="fish" value="item.id"/>
+					<sound id="meow" />
+					<wait seconds="0.5" />
+					<item eval="fish" count="-1"/>
+					<sound id="purr" />
+					<invokeLater>
+						<action>this.idle.runFrom(player)</action>
+					</invokeLater>
+				</window>
+			</section>
 		</operate>
 	</npc>
 </npcs>

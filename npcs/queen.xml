@@ -12,23 +12,6 @@
       getLocalPlayer().equipment.forceEquip(slot,getLocalPlayer(), getItem(item).asItem());
       _slot.get().setName(name);
     }
-
-    function getWyrmQuest(player){
-    if (
-    !player.hasQuest('tales_sacrifice')
-    ||
-    (player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice'))
-    ||
-    (!player.hasQuest('golem_mine') && !player.hasQuest('tales_farming') && player.questComplete('tales_sacrifice'))
-    ||
-    player.canCompleteQuest('golem_mine')
-    ||
-    player.canCompleteQuest('tales_farming')
-    ||
-    (player.getFlag('WTGolemStatue') && !player.getFlag('learnGolem'))
-    ){return true;}
-    else return false;
-    }
   </action>
   <npc id="npc_wyrm_queen" tile="wyrm_queen" icon="wyrm_queen.ico"/>
   <procedure id="wyrm_quests">
@@ -41,9 +24,9 @@
       <section if="player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice')">
         <dialogue text="Good. Very good."/>
         <action>
-        wyrmUpgrade('wyrm_weapon1');
-        wyrmUpgrade('wyrm_armor1');
-        wyrmUpgrade('wyrm_drill1');
+            wyrmUpgrade('wyrm_weapon1');
+            wyrmUpgrade('wyrm_armor1');
+            wyrmUpgrade('wyrm_drill1');
         </action>
         <complete quest="tales_sacrifice" />
       </section>
@@ -79,18 +62,15 @@
       </section>
       <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
         <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
+        <action>setFlag("learnGolem",true);</action>
       </section>
-      <run procedure="queen.tips"/>
+      <group>
+        <dialogue section="wyrm_queen" id="tip1" speaker='this' />
+        <dialogue section="wyrm_queen" id="tip2" speaker='this' />
+        <dialogue section="wyrm_queen" id="tip3" speaker='this' />
+        <dialogue section="wyrm_queen" id="tip4" speaker='this' />
+      </group>
     </choose>
-    <stop/>
-  </procedure>
-  <procedure id="queen.tips">
-    <group>
-      <dialogue section="wyrm_queen" id="tip1" speaker='this' />
-      <dialogue section="wyrm_queen" id="tip2" speaker='this' />
-      <dialogue section="wyrm_queen" id="tip3" speaker='this' />
-      <dialogue section="wyrm_queen" id="tip4" speaker='this' />
-    </group>
   </procedure>
 
   <quest id="tales_sacrifice" exp="50" giver="npc_wyrm_queen">

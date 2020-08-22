@@ -1,7 +1,6 @@
 <data>
 	<area id="wyrm_tales.golem_cave" width="64" height="64" background="black" temporary="true">
 		<tiles id="stone" start="0" end="1" />
-		<!-- <tiles id="dirt" start="0.1" end="0.3" /> -->
 		<mine start="0.45" end="0.55" percent="0.3"/>
 		<tiles id="blackstone" y="0" />
 		<tiles id="blackstone" y="63" />
@@ -12,9 +11,7 @@
 		<ore id="diamond" start="0.9" end="1.0" percent="0.00125" tile="stone" />
 		<ore id="gold" start="0.75" end="1.0" percent="0.00625" tile="stone" />
 		<ore id="iron" start="0" end="0.9" percent="0.01875" tile="stone" />
-		<!-- <ore id="lava" start="0.7" end="0.8" percent="1" tile="stone" /> -->
 		<objects id="golem" start="0.0" end="1.0" percent="0.00375" tile="stone" />
-		<!-- <objects id="gold_golem" start="0.45" end="0.55" percent="0.00075" /> -->
 		<structure id="tales_wyrm_tunnel" x="32" y="32"/>
 		<mine x="32" y="32" light="3" />
 		<mine x="33" y="32" light="3" />

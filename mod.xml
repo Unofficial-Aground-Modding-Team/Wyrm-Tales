@@ -2,13 +2,29 @@
 <mod>
   <name>Wyrm Tales</name>
   <description>Wyrms!</description>
-  <author>Apprentice Alchemist</author>
+  <author>Zeta Labs</author>
   <version>0.0.1</version>
   <loadAfter>Full Version</loadAfter>
   <loadAfter>wyrms plus</loadAfter>
   <init>
+    <onLoad>
+      <action>
+        if(modEnabled("wyrms_plus")){
+          getMod("wyrms_plus").setEnabled(false);
+          reloadData();
+        }
+      </action>
+    </onLoad>
+    <action>
+      var e = new EReg("\\${(.*?)}","");
+      function interpolate(string,eval){
+        while(e.match(string)){
+          string = StringTools.replace(string,e.matched(0),eval(e.matched(1)));
+        }
+        return string;
+      }
+    </action>
     <include id="en_US.xml" includeRoot="true"/>
-    <entry player="wyrm.tales" id="wyrm_tales" area="wyrm_tales.main" x="9" y="2" name="entry.wyrm_tales" description="entry.wyrm_tales_desc"/>
     <include id="npcs/scenes.xml"/>
     <include id="music.xml" />
     <include id="items/items.xml"/>

@@ -1,78 +1,79 @@
 <data>
   <npc id="wyrm.miner.nnpc" layers="wurm" behind="true" animation="wyrm" icon="wyrm.ico" night="true">
-    <idle class="mineOre"><loot id="coal" /></idle>
-		<color id="wyrm" />
-	</npc>
+    <idle class="mineOre">
+      <loot id="coal" />
+    </idle>
+    <color id="wyrm" />
+  </npc>
   <npc id="wyrm.farmer.nnpc" layers="wurm" behind="true" animation="wyrm" icon="wyrm.ico" night="true">
-    <idle class="tendFarm"><farm id="wyrm_farm" /></idle>
-		<color id="wyrm" />
-	</npc>
+    <idle class="tendFarm">
+      <farm id="wyrm_farm" />
+    </idle>
+    <color id="wyrm" />
+  </npc>
   <npc id="wyrm.builder.nnpc" layers="wurm" behind="true" animation="wyrm" icon="wyrm.ico" night="true">
     <idle class="build">
-			<collect><loot id="wood" /></collect>
-			<collect>
-				<loot p="2" />
-				<loot id="berries" p="4" />
-				<loot id="red_berries" p="1" />
-			</collect>
+      <collect>
+        <loot id="wood" />
+      </collect>
+      <collect>
+        <loot p="2" />
+        <loot id="berries" p="4" />
+        <loot id="red_berries" p="1" />
+      </collect>
     </idle>
-		<color id="wyrm" />
-	</npc>
-  <!-- <action>
-    function getDistance(o1,o2){
-      var dx = o1.xPos - o2.xPos;
-      var dy = o1.yTile - o2.yTile;
-      return Math.sqrt( Math.pow(dx,2) + Math.pow(dy,2));
-    }
-    function wyrmFindTarget(npc,area){
-    var curDis = 2000;
-    var target = null;
-    var objects = area.getAllObjects();
-    for (enemy in objects){
-      //trace(enemy.info.xml.nodeName() == 'enemy');
-      if (enemy.info.xml.nodeName() == 'enemy'){
-        if (getDistance(npc,enemy) &lt; curDis){
-          curDis = getDistance(npc,enemy);
-          target = enemy;
+    <color id="wyrm" />
+  </npc>
+  <action>
+    try{
+      function getDistance(o1,o2){
+        var dx = o1.xPos - o2.xPos;
+        var dy = o1.yTile - o2.yTile;
+        return Math.sqrt( Math.pow(dx,2) + Math.pow(dy,2));
+      }
+      function wyrmFindTarget(npc,area){
+        var curDis = 2000;
+        var target = null;
+        var objects = area.getAllObjects();
+        for (enemy in objects){
+          if (enemy.info.xml.nodeName() == 'enemy'){
+            if (getDistance(npc,enemy) &lt; curDis){
+              curDis = getDistance(npc,enemy);
+              target = enemy;
+            }
           }
         }
+        return target;
       }
-    //trace ('WFTTarget' + target);
-    return target;
-    }
-    function getTargetPos(npc,target){
-      var target_x = target.tile_x + target.getDX();
-      var target_y = target.tile_y;
-      var dx = target_x/10;
-      var dy = target_y/10;
-      var x = Math.round(dx);
-      var y = Math.round(dy);
-      trace ('First' + [target_x,target_y]);
-      trace ('Second' + [dx,dy]);
-      trace ('Third' + [x,y]);
-      return [x,y];
-    }
+      function getTargetPos(npc,target){
+        var target_x = target.tile_x + target.getDX();
+        var target_y = target.tile_y;
+        if(target_x &lt; 10 || target_y &lt; 10) return [target_x/2,target_y/2];
+        var dx = target_x/10;
+        var dy = target_y/10;
+        var x = Math.round(dx);
+        var y = Math.round(dy);
+        trace ('First' + [target_x,target_y]);
+        trace ('Second' + [dx,dy]);
+        trace ('Third' + [x,y]);
+        return [x,y];
+      }
+    }catch(e:Dynamic){trace(e);}
   </action>
-  <npc id="wyrm.hunter.nnpc" layers="wurm" speed="2" behind="true" animation="wyrm" icon="wyrm.ico" night="true" wander="true" underground="true">
+<npc id="wyrm.hunter.nnpc" layers="wurm" speed="2" behind="true" animation="wyrm" icon="wyrm.ico" night="true" wander="true" underground="true">
     <init>
-      <set id="count" value="0" />
-      <set id="enemies" value="[]" />
-      <set id="sh" value="this.area.getMainStorehouse()"/>
-      <set id="currentEnemy" value="null"/>
+
     </init>
     <idle class="locate">
       <getLocation>
         if (this.inventory.weight > 5) {
-        var storehouse = area.getMainStorehouse();
-        if (storehouse != null){
-        return [storehouse.tile_x + 1,storehouse.tile_y];
-        }
-        }
-        else if (this.inventory.weight &lt; 5){
+          var storehouse = area.getMainStorehouse();
+          if (storehouse != null) return [storehouse.tile_x + 1,storehouse.tile_y];
+        } else if (this.inventory.weight &lt; 5){
           var target = wyrmFindTarget(this,area);
           trace('GLTarget :' + target);
-          if (target == null) {return [this.tile_x, this.tile_y];}
-          else if(target != null){
+          if (target == null) return [this.tile_x, this.tile_y];
+          else {
           this.vars.set('target',target);
           //var target_x = getTargetPos(this,target)[0];
           //var target_y = getTargetPos(this,target)[1];
@@ -84,57 +85,45 @@
             if (dy > 5) dy = 5; else if (dy &lt; -5) dy = -5;
             if (dx == 0 && dy == 0) dx = Math.round(random())-0.5;
             //goes half the distance between the pokemon and the target each time it checks for where to go, but only up to 5 tiles
-          return [this.tile_x + dx, this.tile_y + dy];
+          //return [this.tile_x + dx, this.tile_y + dy];
           return getTargetPos(this,target);
           }
         }
       </getLocation>
       <handleLocation>
-      if (this.inventory.weight > 5){
-        trace('Overweight!');
-        var structure = this.getOverlappingStructure();
-        var storehouse = area.getMainStorehouse();
-        if (this.tile_x + 1 == storehouse.tile_x + 1 && this.tile_y == storehouse.tile_y){
-        if (structure == storehouse || structure != storehouse){
-        var items = [];
-        var iter = this.inventory.getItems();
-        while(iter.hasNext()){
-        var i = iter.next().getItemValues();
-        while(i.hasNext()){var v = i.next(); if(v.item.canStore()) items.push(v);}}
-        for(v in items){
-          //trace(v);
-          //trace(v.item);
-          //trace(v.id);
-          //trace(getItem(v.id));
-        this.inventory.addItems(v.item, -v.count, v.value, v.name);
-        storehouse.addItem(this,v.item, v.count, v.value, v.name);}
-        }
-        }
-        }
-        else if(this.inventory.weight &lt; 5){
-        var target = this.vars.get('target');
-        trace('HL' + target);
-        var i = area.getObjectsInTile(this.tile_x - this.getFacing(), this.tile_y);
-        //trace(i);
-        //while( i.hasNext() ) {
-        //  o = i.next();
-        //  //trace(0);
-        //  if( o != null && o.info != null && o.info.xml != null && o.info.xml.nodeName() == 'enemy' ) {
-        //    if(o.getLoot != null ){l = o.getLoot();}
-        //    o.damage(4, FLAG_CRITICAL, this);
-        //    if(l != null && o == null) {
-        //    while( l.hasNext() ){lt = l.next(); this.inventory.addItem(lt.item.id, lt.count);}
-        //  }
-        //}
-        for (o in i){
-          //if (o == target){ var loot = o.getLoot(); this.playAnimation('attack'); o.damage(999);
-          //if(l != null && o == null) {
-          //while( l.hasNext() ){lt = l.next(); this.inventory.addItem(lt.item.id, lt.count);}
-        //}
-        }
-        }
+        if (this.inventory.weight > 5){
+          var storehouse = area.getMainStorehouse();
+          var items = [];
+          var iter = this.inventory.getItems();
+            while(iter.hasNext()){
+              var i = iter.next().getItemValues();
+              while(i.hasNext()){
+                var v = i.next(); 
+                if(v.item.canStore()) items.push(v);
+              }
+            }
+              for(v in items){
+                this.inventory.addItems(v.item, -v.count, v.value, v.name);
+                storehouse.addItem(this,v.item, v.count, v.value, v.name);
+              }
+          } else {
+            var target = this.vars.get('target');
+            var i = area.getObjectsInTile(this.tile_x - this.getFacing(), this.tile_y);
+            for(obj in i){
+              if(i.info.xml.nodeName() == "enemy"){
+                obj.damage(200);
+              }
+            }
+            var i = area.getObjectsInTile(this.tile_x + this.getFacing(), this.tile_y);
+            for(obj in i){
+              if(i.info.xml.nodeName() == "enemy"){
+                this.renderer.scaleX = - obj.getFacing();
+                obj.damage(200);
+              }
+            }
+          }
       </handleLocation>
     </idle>
     <color id="wyrm" />
-  </npc> -->
+  </npc>
 </data>

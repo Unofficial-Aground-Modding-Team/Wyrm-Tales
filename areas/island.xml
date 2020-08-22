@@ -1,6 +1,6 @@
 <data>
 
-  <area id="wyrm_tales.farming" width="32" height="12" background="sky">
+  <area id="wyrm_tales.farming" width="32" height="96" background="sky">
     <tiles id="dirt" start="0" end="0.5" />
     <tiles id="stone" start="0.5" end="1" />
     <tiles id="grass" y="0" />
@@ -13,6 +13,10 @@
     <npc id="WTfisherman.cat" x="5"/>
     <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock" />
     <shore x="32" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
+    <appendArea id="sea_floor">
+      <params area_left="-240" area_right="280" area_width="32" area_height="96" />
+    </appendArea>
+
 
     <objects id="tree" y="-1" startX="4" endX="30" minDist="6" maxDist="9" array="trees" />
     <objects id="bush" y="-1" between="trees" pos="0.25" altPos="0.75" percent="0.5" />
@@ -40,17 +44,19 @@
     <objects id="treasure_chest" start="0.1" end="0.9" count="1" tile="dirt">
       this.inventory.addItems(Item.get("farm_blueprint"), 1);
     </objects>
-    <objects id="treasure_chest" start="0.5" end="0.9" count="1" tile="stone">
+    <objects id="treasure_chest" start="0.5" end="0.9" count="1" tile="dirt">
       this.inventory.addItems(Item.get("plant_gem"), 1);
     </objects>
-    <init><runAreaLoad /></init>
+    <init>
+      <runAreaLoad />
+    </init>
     <onLoad>
       <structure id="WTdockhouse" if="area.getStructureById('WTdockhouse') == null"/>
       <object id="WTfisherman.cat" if="area.getObject('WTfisherman.cat') == null"/>
       <!-- <object id="WTfisherman.boat" x="-4" if="area.getObject('WTfisherman.boat') == null"/> -->
       <tile id="seagull" animation="seagull.walk" x="random()*5" />
-			<tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />
-			<tile id="seagull" animation="seagull.fly" x="-random()*5-1" y="-4" />
+      <tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />
+      <tile id="seagull" animation="seagull.fly" x="-random()*5-1" y="-4" />
       <tile id="redbreast" type="bird" x="random()*8" fromX="0" toX="32" />
       <tile id="redbreast" type="bird" x="8+random()*8" fromX="0" toX="32" />
       <tile id="redbreast" type="bird" x="16+random()*8" fromX="0" toX="32" />
@@ -58,6 +64,4 @@
       <music id="start" seconds="1" />
     </onLoad>
   </area>
-
-
 </data>

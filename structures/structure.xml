@@ -1,119 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-  <action>
-    function checkWyrmQuest(player){
-    return true;
-    }
-  </action>
 
   <structure id="wyrm_storehouse" width="48" height="32" image="{core}/magic1/structures/wyrm_door.png" type="storehouse" main="true" title="common.storehouse">
-    <tooltip id="storehouse" />
+    <tooltip id="storehouse"/>
   </structure>
   <animation id="wyrm_queen.over" x="32" count="5"/>
   <animation id="wyrm_queen.talk" equals="wyrm_queen.idle"/>
   <npc id="wyrm_house" tile="wyrm_queen" animation="wyrm_queen" tileWidth="5" tileHeight="2.8" action="enter" stopForPlayer="false" icon="wyrm_queen.ico" indicatorX="-25" indicatorY="-10" fullHeight="true">
-    <operate>
-      <run procedure="wyrm_quests"/>
-      <action>player.fullRestore();</action>
-      <save sleep="true"/>
-    </operate>
-  </npc>
-
-  <!-- <structure id="wyrm_quest" width="16" height="16" fullHeight="true" name="enter">
-    <tile id="magic_orb" animation="magic_orb.idle" x="-1.5" y="-1.5"/>
-    <operate>
-      <dialogue section="wyrm_tales" id="quests0" if="!getFlag('wyrm_tales_quests0')"/>
+    <init>
       <action>
-          ev.getString = getString;
-          ev.setString = setString;
-          ev.getGlobal = getGlobal;
-          ev.setGlobal = setGlobal;
-          ev.getFlag = getFlag;
-          ev.setFlag = setFlag;
-          ev.player = player;
-          ev.evalXml = evalXml;
-          ev.setBack = setBack;
-      </action>
-      <action>
-        setFlag('wyrm_tales_quests0',true);
-        str = '&lt;window type="craft" title="common.select_quest">';
-        for (q in getDataByType('wyrmQuest')){
-          str += listQuest(q,player);
+        function hasWyrmQuest(){
+          for(o in wyrm_quests.elementsNamed("choose").next().elementsNamed("section")) 
+            if(eval(o.get("if")) == true) return true;
+          return false;
         }
-      str += "&lt;/window>";
-      evalXml(str);
-     </action>
-   </operate>
- </structure>
-
-  <action>function wyrmQuest(v,player){player.setFlag("wyrm_quest",v); if(getGlobal("tales_queen") != null) getGlobal("tales_queen").updateRenderer();}</action> -->
-  <structure id="WTdragon_lair" width="192" height="112" image="{core}/structures/dragon_lair.png" type="lair" title="structure.tooltip.dragon_lair2" animalX="80" animalY="96" slot="structure.dragon_lair" allowFlying="true" includeInventory="57">
-    <tooltip id="dragon_lair2" if="getFlag('dragon_knowledge')" />
-    <tooltip id="inspect" if="!getFlag('dragon_knowledge')" />
-    <animal id="dragon" />
-    <animal id="adult_dragon" />
-    <recipe type="dragon_feed" />
-    <animal id="young_dragon" />
-    <!-- <familiar option="actions.enrage" if="area.id == 'start' && this.animal.info.id == 'adult_dragon' && area.getObject('adult_dragon') == null">
-      <window type="prompt" message="actions.enrage_prompt">
-        <object id="adult_dragon" x="this.tile_x+2.5" y="this.tile_y-1" /><action>area.getObject('adult_dragon').awaken(); this.setAnimal(null);</action><closeWindows />
-      </window>
-    </familiar> -->
-    <!-- <listItem icon="adult_dragon.ico" title="structure.tooltip.fly_dragon" fail="'warning.no_item{item:[item=adult_dragon]}'">
-      <tooltip type="requires" requires="quests.requires">
-        <option>
-          <value icon="adult_dragon.ico" title="item.names.adult_dragon" if="this.animal != null && this.animal.info.id == 'adult_dragon'" />
-          <value icon="adult_dragon.ico" title="structure.place_in_lair{item:[item=adult_dragon]}" error="true" />
-        </option>
-      </tooltip>
-      <closeWindows /><set id="_name" value="this.animal.getNameStr()" />
-      <object id="fly_adult_dragon" x="this.tile_x+2.5" y="this.tile_y-1" pre="true">this.name = _name;</object>
-      <action>setFlag('jump_water', true); fly_adult_dragon.fuel = this.animal.getFeed(); fly_adult_dragon.inventory.copyFrom(this.inventory); this.inventory.clear(); this.setAnimal(null); fly_adult_dragon.mount(player);
-      </action><achievement id="dragon_flight" />
-    </listItem> -->
-    <listItem icon="young_dragon.ico" title="structure.tooltip.raise_into{into:[item=adult_dragon]}" fail="(this.animal != null && this.animal.info.id == 'young_dragon')?'warning.ingredients':'warning.no_item{item:[item=young_dragon]}'">
-      <tooltip type="requires" requires="quests.requires">
-        <option>
-          <value icon="young_dragon.ico" title="item.names.young_dragon" if="this.animal != null && this.animal.info.id == 'young_dragon'" />
-          <value icon="young_dragon.ico" title="structure.place_in_lair{item:[item=young_dragon]}" error="true" />
-        </option>
-        <requirement icon="fire_gem.ico" title="item.names.fire_gem" count="player.getItemCountStorehouse('fire_gem')" of="1" />
-      </tooltip>
-      <set id="into" value="'adult_dragon'" />
-      <item id="fire_gem" count="-1" storehouse="true" />
-      <run procedure="dragon_lair.raise_dragon" />
-    </listItem>
-    <listItem icon="baby_dragon.ico" title="structure.tooltip.raise_into{into:[item=young_dragon]}" fail="(this.animal != null && this.animal.info.id == 'dragon')?'warning.ingredients':'warning.no_item{item:[item=dragon]}'">
-      <tooltip type="requires" requires="quests.requires">
-        <option>
-          <value icon="baby_dragon.ico" title="item.names.dragon" if="this.animal != null && this.animal.info.id == 'dragon'" />
-          <value icon="baby_dragon.ico" title="structure.place_in_lair{item:[item=dragon]}" error="true" />
-        </option>
-        <requirement icon="dragonblood.ico" title="item.names.dragonblood" count="player.getItemCountStorehouse('dragonblood')" of="5" />
-      </tooltip>
-      <set id="into" value="'young_dragon'" />
-      <item id="dragonblood" count="-5" storehouse="true" />
-      <run procedure="dragon_lair.raise_dragon" />
-    </listItem>
+      </action>
+    </init>
     <operate>
-      <section if="!getFlag('dragon_knowledge')">
-        <dialogue text="I wonder what this strange structure does. . ." speaker="player"/>
-        <stop/>
+      <section>
+        <quest if="hasWyrmQuest()"/>
+        <menu section="common" closeable="true">
+          <choice id="talk">
+            <run procedure="wyrm_quests"/>
+          </choice>
+          <choice id="sleep_day">
+            <action>player.fullRestore();</action>
+            <save sleep="true" />
+          </choice>
+          <choice id="sleep_night">
+            <action>player.fullRestore();</action>
+            <save toNight="true" />
+          </choice>
+        </menu>
       </section>
     </operate>
-  </structure>
+  </npc>
 
   <structure id="WTgolem" width="128" height="64" tile="doorway" name="activate" animation="golem.statue">
     <tile id="golem.statue" x="-3" y="0" />
     <tile id="golem.statue" x="1" y="0" />
     <operate>
-      <section if="!getFlag('WTGolemStatue') && ! getFlag('learnGolem')">
+      <section if="!getFlag('WTGolemStatue') && !getFlag('learnGolem')">
         <action>if (!getFlag('WTGolemStatue')){setFlag('WTGolemStatue',true);}</action>
         <dialogue section="golem" id="wonder"/>
         <stop/>
       </section>
       <set id="gem" value="'earth_gem'" />
-      <set id="into" value="'golem.active'" />
+      <set id="into" value="'WTgolem.active'" />
       <set id="achievement" value="null" />
       <set id="sfx" value="null" />
       <run procedure="activate.gem_structure" />
