@@ -9,7 +9,8 @@
     <text id="wyrm_tales">Unoiks 106a</text>
   </section>
   <section id="system.planet.desc">
-    <text id="wyrm_tales">Considered for the Sanctuary Project, but rejected because of the aggressive fauna.</text>
+    <!-- TODO -->
+    <text id="wyrm_tales"></text>
   </section>
   <section id="item.names">
     <text id="wyrm_weapon0">Wyrm Fang</text>

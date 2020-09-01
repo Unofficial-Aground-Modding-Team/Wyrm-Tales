@@ -40,7 +40,9 @@
     <tile id="golem.statue" x="-3" y="0" />
     <tile id="golem.statue" x="1" y="0" />
     <operate>
-      <section if="!getFlag('WTGolemStatue') && !getFlag('learnGolem')">
+      <dialogue section="warning" id="incomplete"/>
+      <stop/>
+      <!-- <section if="!getFlag('WTGolemStatue') && !getFlag('learnGolem')">
         <action>if (!getFlag('WTGolemStatue')){setFlag('WTGolemStatue',true);}</action>
         <dialogue section="golem" id="wonder"/>
         <stop/>
@@ -49,7 +51,7 @@
       <set id="into" value="'WTgolem.active'" />
       <set id="achievement" value="null" />
       <set id="sfx" value="null" />
-      <run procedure="activate.gem_structure" />
+      <run procedure="activate.gem_structure" /> -->
     </operate>
   </structure>
   <structure id="WTgolem.active" width="128" height="64" tile="doorway" name="enter" animation="golem.statue">

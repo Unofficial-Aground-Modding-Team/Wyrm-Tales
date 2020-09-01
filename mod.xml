@@ -16,12 +16,38 @@
       </action>
     </onLoad>
     <action>
+    // A collection of haxe stuff.
       var e = new EReg("\\${(.*?)}","");
       function interpolate(string,eval){
         while(e.match(string)){
           string = StringTools.replace(string,e.matched(0),eval(e.matched(1)));
         }
         return string;
+      }
+
+      function giveQuestItems(player,quest){
+        for(n in getQuest(quest).getRequirements()){
+          if(n.type == 'item') player.addItem(n.id,n.count);
+          else trace('Requirement Type: ' + n.type+' not supported!');
+        }
+      }
+
+      function giveAllQuestItems(){
+        for(o in getLocalPlayer().state.quests){ giveQuestItems(getLocalPlayer(),o.id);}
+      }
+
+      function reloadArea(){
+          var player = getLocalPlayer(), x = player.tile_x,y = player.tile_y,area = player.area.id;
+          player.teleport("spirit_box.void");
+          player.areas.remove(area);
+          player.teleport(area,x,y);
+        }
+      function cf(obj){
+          var fields = classFields(obj);
+          var f = fields.filter(function(o){
+              return !StringTools.startsWith(o,eval("\"_\"+\"_\""));
+          });
+          return f;
       }
     </action>
     <include id="en_US.xml" includeRoot="true"/>

@@ -8,7 +8,9 @@
     }
 
     function wyrmUpgrade(item){
-      var slot = getItem(item).xml.get('slot'), _slot = getLocalPlayer().equipment.get(slot), name = getLocalPlayer().equipment.get(slot).get().getNameStr();
+      var slot = getItem(item).xml.get('slot'), 
+      _slot = getLocalPlayer().equipment.get(slot), 
+      name = getLocalPlayer().equipment.get(slot).get().getNameStr();
       getLocalPlayer().equipment.forceEquip(slot,getLocalPlayer(), getItem(item).asItem());
       _slot.get().setName(name);
     }
@@ -24,9 +26,9 @@
       <section if="player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice')">
         <dialogue text="Good. Very good."/>
         <action>
-            wyrmUpgrade('wyrm_weapon1');
-            wyrmUpgrade('wyrm_armor1');
-            wyrmUpgrade('wyrm_drill1');
+          wyrmUpgrade('wyrm_weapon1');
+          wyrmUpgrade('wyrm_body1');
+          wyrmUpgrade('wyrm_drill1');
         </action>
         <complete quest="tales_sacrifice" />
       </section>
@@ -60,10 +62,10 @@
         <item id="plant_gem" count="-1" hidden="true"/>
         <item id="growth_seed"/>
       </section>
-      <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
+      <!-- <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
         <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
         <action>setFlag("learnGolem",true);</action>
-      </section>
+      </section> -->
       <group>
         <dialogue section="wyrm_queen" id="tip1" speaker='this' />
         <dialogue section="wyrm_queen" id="tip2" speaker='this' />

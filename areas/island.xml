@@ -9,8 +9,8 @@
     <structure id="tales_wyrm_tunnel" x="1" y="1">
       <teleport area="wyrm_tales.main" x="3" y="0"/>
     </structure>
-    <structure id="WTdockhouse"/>
-    <npc id="WTfisherman.cat" x="5"/>
+    <!-- <structure id="WTdockhouse"/>
+    <npc id="WTfisherman.cat" x="5"/> -->
     <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock" />
     <shore x="32" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
     <appendArea id="sea_floor">
@@ -51,8 +51,8 @@
       <runAreaLoad />
     </init>
     <onLoad>
-      <structure id="WTdockhouse" if="area.getStructureById('WTdockhouse') == null"/>
-      <object id="WTfisherman.cat" if="area.getObject('WTfisherman.cat') == null"/>
+      <!-- <structure id="WTdockhouse" if="area.getStructureById('WTdockhouse') == null"/>
+      <object id="WTfisherman.cat" if="area.getObject('WTfisherman.cat') == null"/> -->
       <!-- <object id="WTfisherman.boat" x="-4" if="area.getObject('WTfisherman.boat') == null"/> -->
       <tile id="seagull" animation="seagull.walk" x="random()*5" />
       <tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />

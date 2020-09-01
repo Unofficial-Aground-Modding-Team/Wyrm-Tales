@@ -36,16 +36,11 @@
           for (a in 8...14) for (b in 0...4) setBack(a,b,'bedrock');
     </action>
     <init>
-    <!-- Absolutely not sorry -->
-      <section if="player.info.id != 'wyrm.tales'">
-        <action>id = "wyrm.tales"</action>
-        <run procedure="changePlayerForm"/>
-      </section>
       <equip id="wyrm_weapon0" fromInventory="false"/>
       <equip id="wyrm_drill0" fromInventory="false"/>
       <equip id="wyrm_body0" fromInventory="false"/>
       <equip id="WTwyrm" fromInventory="false"/>
-      <scene id="wyrm_tales" show="intro" endWith="fade"/>
+      <!-- <scene id="wyrm_tales" show="intro" endWith="fade"/> -->
       <runAreaLoad />
       <action>
           player.renderer.alpha = 0;
