@@ -4,7 +4,7 @@
     <tiles id="dirt" start="0" end="0.5" />
     <tiles id="stone" start="0.5" end="1" />
     <tiles id="grass" y="0" />
-    <tiles id="blackstone" y="11" />
+    <!-- <tiles id="blackstone" y="96" /> -->
 
     <structure id="tales_wyrm_tunnel" x="1" y="1">
       <teleport area="wyrm_tales.main" x="3" y="0"/>

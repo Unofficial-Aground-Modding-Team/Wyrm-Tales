@@ -5,25 +5,25 @@
   <item id="wyrm_weapon0" extends="wyrm_base" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" attack="2" cut="2" knockback="5" stamina="10"/>
   <item id="wyrm_drill0" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="1" breakPower="1" icon="wyrm.ico"/>
   <item id="wyrm_body0" extends="wyrm_base" slot="armor" defense="0">
-    <equipCost health="-1" stamina="-1" />
+    <!-- <equipCost health="-1" stamina="-1" /> -->
   </item>
   <!-- Quick upgrade, like Iron, but not optional -->
   <item id="wyrm_weapon1" type="none" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="3" cut="2" knockback="5" stamina="8" underwater="true" />
   <item id="wyrm_drill1" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="2" breakPower="2" icon="wyrm.ico"/>
   <item id="wyrm_body1" type="none" slot="armor" cost="0" weight="0" defense="1" icon="wyrm.ico" unequip="false" capacity="25">
-    <equipCost health="-2" stamina="-3" />
+    <equipCost health="-1" stamina="-2" />
   </item>
   <!-- Actually makes the difference. kinda like Steel -->
   <item id="wyrm_weapon2" type="none" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="5" cut="2" knockback="5" stamina="6" underwater="true" />
   <item id="wyrm_drill2" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="3" breakPower="3" icon="wyrm.ico"/>
   <item id="wyrm_body2" type="none" slot="armor" cost="0" weight="0" defense="3" icon="wyrm.ico" unequip="false" capacity="50">
-    <equipCost health="-3" stamina="-5" />
+    <equipCost health="-2" stamina="-4" />
   </item>
   <!-- Still before splitting... I think -->
   <!-- Drill / Wyrm Drill tier -->
   <item id="wyrm_weapon3" type="none" equip_anim="equipment.wyrm_weapon" sfx="wyrm_attack" slot="weapon" cost="0" weight="0" icon="wyrm.ico" unequip="false" attack="6" cut="2" knockback="5" stamina="4" underwater="true" />
   <item id="wyrm_drill3" type="none" loop="wyrm_drill" slot="pickaxe" cost="0" weight="0" unequip="false" mine="4" breakPower="4" icon="wyrm.ico"/>
   <item id="wyrm_body3" type="none" slot="armor" cost="0" weight="0" defense="4" icon="wyrm.ico" unequip="false" capacity="75">
-    <equipCost health="-4" stamina="-8" />
+    <equipCost health="-3" stamina="-6" />
   </item>
   </data>

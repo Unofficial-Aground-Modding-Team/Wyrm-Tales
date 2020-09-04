@@ -40,7 +40,7 @@
       <equip id="wyrm_drill0" fromInventory="false"/>
       <equip id="wyrm_body0" fromInventory="false"/>
       <equip id="WTwyrm" fromInventory="false"/>
-      <!-- <scene id="wyrm_tales" show="intro" endWith="fade"/> -->
+      <scene id="wyrm_tales" show="intro" endWith="fade"/>
       <runAreaLoad />
       <action>
           player.renderer.alpha = 0;
