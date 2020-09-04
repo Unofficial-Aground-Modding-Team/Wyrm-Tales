@@ -59,14 +59,13 @@
       <section if="player.canCompleteQuest('tales_farming')">
         <dialogue section="wyrm_queen" id="tales_farming_complete"/>
         <complete quest="tales_farming" useResources="false"/>
-        <item id="plant_gem" count="-1" hidden="true"/>
-        <item id="growth_seed"/>
       </section>
       <!-- <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
         <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
         <action>setFlag("learnGolem",true);</action>
       </section> -->
       <group>
+        <dialogue section="wyrm_queen" id="tip_barn" speaker="this" if="player.hasSeenItem('barn_blueprint')"/>
         <dialogue section="wyrm_queen" id="tip1" speaker='this' />
         <dialogue section="wyrm_queen" id="tip2" speaker='this' />
         <dialogue section="wyrm_queen" id="tip3" speaker='this' />
@@ -79,15 +78,14 @@
     <item id="dragonblood" count="5"/>
   </quest>
   <quest id="golem_mine" exp="100" giver="npc_wyrm_queen">
-    <script id="getFlag('golem_cave')" name="wyrm_tales.dungeon>cave1" tile="golem.ico"/>
-    <item id="spirit_gem" hidden="true"/>
+    <!-- <script id="getFlag('golem_cave')" name="wyrm_tales.dungeon>cave1" tile="golem.ico"/> -->
+    <item id="spirit_gem"/>
   </quest>
   <quest id="tales_farming" exp="100" giver="npc_wyrm_queen">
     <script id="player.hasItem('wheat_seed') && player.hasItem('sugar_seed') && player.hasItem('orchard_seed') && player.hasItem('cotton_seed') && player.hasItem('rice_seed')" name="quest>gather_seeds" tile="tree_seed.ico"/>
-    <item id="plant_gem" hidden="true"/>
+    <!-- <item id="plant_gem" hidden="true"/> -->
   </quest>
   <quest id="tales_spirit_upgrade" exp="100" give="npc_wyrm_queen">
-    <script id="player.questComplete('golem_mine')" name="quest>golem_mine" tile="golem.ico"/>
     <item id="spirit_gem" count="1"/>
     <item id="alter_gem" count="1"/>
   </quest>

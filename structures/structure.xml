@@ -17,8 +17,11 @@
       </action>
     </init>
     <operate>
+      <section if="hasWyrmQuest()">
+        <quest/>
+        <run procedure="wyrm_quests"/>
+      </section>
       <section>
-        <quest if="hasWyrmQuest()"/>
         <menu section="common" closeable="true">
           <choice id="talk">
             <run procedure="wyrm_quests"/>

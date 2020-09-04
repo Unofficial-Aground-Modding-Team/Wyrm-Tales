@@ -1,10 +1,10 @@
 <data>
 
-  <area id="wyrm_tales.farming" width="32" height="96" background="sky">
+  <area id="wyrm_tales.farming" width="32" height="12" background="sky">
     <tiles id="dirt" start="0" end="0.5" />
     <tiles id="stone" start="0.5" end="1" />
     <tiles id="grass" y="0" />
-    <!-- <tiles id="blackstone" y="96" /> -->
+    <tiles id="blackstone" y="12" />
 
     <structure id="tales_wyrm_tunnel" x="1" y="1">
       <teleport area="wyrm_tales.main" x="3" y="0"/>
@@ -14,7 +14,7 @@
     <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
     <shore x="32" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
     <appendArea id="sea_floor">
-      <params area_left="-240" area_right="280" area_width="32" area_height="96" />
+      <params area_left="-240" area_right="280" area_width="32" area_height="12" />
     </appendArea>
 
 

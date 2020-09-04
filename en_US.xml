@@ -68,15 +68,16 @@
     <text id="sacrifice1">Defeat some enemy wyrms, and bring me their blood</text>
     <text id="golem_learn1">What do you say? Two giant golem statues? That means. . . the golemech still lives.</text>
     <text id="golem_learn2">If he still lives then hope might not be lost... yet.</text>
-    <text id="tip1">Dragonblood is one of the best ways to restore your stamina and health when you can"t reach me.</text>
+    <text id="tip1">Dragonblood is one of the best ways to restore your stamina and health when you can't reach me.</text>
     <text id="tip2">Killing enemy wyrms is the best way to get dragonblood.</text>
-    <text id="tip3">Don"t stay out at night. It"s dangerous.</text>
+    <text id="tip3">Dangerous creatures roam the surface at night. Be careful.</text>
     <text id="tip4">Remember. If you find something, tell me about it.</text>
+    <text id="tip_barn">You can use the barn to collect all your crops at once.</text>
     <text id="golem_mine1">My scouts have found two new areas. I need you to explore them.</text>
     <!-- <text id="golem_mine2">The first one is a regenerating cave. The second one is an island that seems to be inhabited by a human. You should do two things when you arrive there : First of all collect some seeds, and second make contact with the human.</text> -->
-    <text id="golem_mine2">The first one is a regenerating cave, the second one is and island on which you should go gather some materials.</text>
-    <text id="golem_mine_complete">You found a spirit gem?! This is incredible! You need to find more of them!</text>
-    <text id="tales_farming_complete">You found a plant gem! Very good. I can use it to make a vine copse seed. \nWhat do you say? A dock of some kind? Hmm... Maybe there are still humans here. They might be able to help us. . .</text>
+    <text id="golem_mine2">The first one is a regenerating cave, I believe that you will find [item=spirit_gem]'s there. The second one is an island where which you should go gather some seeds.</text>
+    <text id="golem_mine_complete">You found a spirit gem? Very good! You need to find more of them!</text>
+    <text id="tales_farming_complete">With those seeds you will be able to make new foods. Those will be important if you make long trips.</text>
   </section>
   <section id="quests">
     <text id="tales_sacrifice">Sacrifice</text>
