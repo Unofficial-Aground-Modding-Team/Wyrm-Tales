@@ -16,7 +16,6 @@
       </action>
     </onLoad>
     <action>
-    // A collection of haxe stuff.
       var e = new EReg("\\${(.*?)}","");
       function interpolate(string,eval){
         while(e.match(string)){
@@ -36,18 +35,18 @@
         for(o in getLocalPlayer().state.quests){ giveQuestItems(getLocalPlayer(),o.id);}
       }
 
-      function reloadArea(){
-          var player = getLocalPlayer(), x = player.tile_x,y = player.tile_y,area = player.area.id;
-          player.teleport("spirit_box.void");
-          player.areas.remove(area);
-          player.teleport(area,x,y);
-        }
+      function resetArea(){
+        player = getLocalPlayer();
+        var a = player.vehicle == null? player.area.id : player.vehicle.area.id;
+        player.teleport('spirit_box.void');
+        player.areas.remove(a);
+        player.teleport(a);
+        setGameTime(12);
+      }
       function cf(obj){
-          var fields = classFields(obj);
-          var f = fields.filter(function(o){
+          return classFields(obj).filter(function(o){
               return !StringTools.startsWith(o,eval("\"_\"+\"_\""));
           });
-          return f;
       }
     </action>
     <include id="en_US.xml" includeRoot="true"/>
@@ -58,5 +57,7 @@
     <include id="npcs/npc.xml"/>
     <include id="areas/areas.xml"/>
     <include id="player/player.xml"/>
+    
+    <include id="navMap.xml" if="!exists('NAV_DEFINED')"/>
   </init>
 </mod>

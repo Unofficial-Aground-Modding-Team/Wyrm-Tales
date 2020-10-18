@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='utf-8'?>
+<zeta>
+    <action>
+        NAV_INCLUDED = true;
+    </action>
+    <tile id="wyrm_tunnel" sheet="{core}/magic1/structures/wyrm_tunnel.png"/>
+    <tilesheet id="thirallan_map.png" width="108" height="128" />
+    <action>
+        function NAVcreateIcon(id,?anim,?visible){
+                log("NAVcreateIcon");
+                if(anim == null) anim = "single";
+                if(visible == null) visible = true;
+                var ret = Structure.makeRenderer(null,new Xml(0),getTile(id),anim);
+                ret.visible = visible;
+                return ret;
+            }
+    </action>
+    <data type="navMap">
+        function withDefault(xml,id,def){
+            return xml.exists(id) ? xml.get(id) : def;
+        }
+        function createXmlSet(id,value){
+            var ret = Xml.createElement("set");
+            ret.set("id",id);
+            ret.set("value",Std.string(value));
+            return ret;
+        }
+        function cloneXml(xml){
+            var ret = Xml.parse(xml.toString());
+            return ret.firstElement();
+        }
+        this.default_star_tile = withDefault(this.xml,"default_star_tile","star");
+        this.default_star_anim = withDefault(this.xml,"default_star_anim","single");
+        this.default_hover_tile = withDefault(this.xml,"default_hover_tile","nav.star");
+        this.default_hover_tile_anim = withDefault(this.xml,"default_hover_tile_anim","nav.star.select");
+        this.current_tile = withDefault(this.xml,"current_select_tile","nav.star");
+        this.current_anim = withDefault(this.xml,"current_select_animation","nav.star.current");
+        this.bg_tile = withDefault(this.xml,"bg_tile","nav.bg.star");
+        this.bg_anim = withDefault(this.xml,"bg_anim","single");
+
+        this.bg_x = withDefault(this.xml,"bg_x","0");
+        this.bg_y = withDefault(this.xml,"bg_y","0");
+
+        this.window_x = withDefault(this.xml,"window_x","0");
+        this.window_y = withDefault(this.xml,"window_y","0");
+        this.window_width = withDefault(this.xml,"window_width","256");
+        this.window_height = withDefault(this.xml,"window_height","144");
+
+        this.window_close_button = withDefault(this.xml,"window_close_button","false");
+
+        function createStar(data,xml){
+            var ret = {};
+            ret.id = xml.get("id");
+            ret.xml = xml;
+            ret.x = xml.get("x");
+            ret.y = xml.get("y");
+            ret.tile = withDefault(xml,"tile",data.default_star_tile);
+            ret.anim = withDefault(xml,"animation",data.default_star_anim);
+            ret.hover_tile = withDefault(xml,"hover_tile",data.default_hover_tile);
+            ret.hover_anim = withDefault(xml,"hover_animation",data.default_hover_tile_anim);
+            ret.title = xml.get("title");
+            ret.desc = xml.get("desc");
+            var r = Xml.createElement("section");
+            r.addChild(createXmlSet("id","'" + Std.string(ret.id) + "'"));
+            r.addChild(createXmlSet("data_id","'" + Std.string(data.id) + "'"));
+            for(x in xml.elementsNamed("onSelect")){
+                for(y in x.elements()){
+                    r.addChild(cloneXml(y));
+                }
+            }
+            //After the star's onSelect so that stuff in the star's onSelect can stop the default action
+            //Unfortunately `stop` does not seem to work so ....
+            //TODO : get `<stop/>` to work, if possible.
+            for(x in data.xml.elementsNamed("onDefaultSelect")){
+                for(y in x.elements()){
+                    r.addChild(cloneXml(y));
+                }
+            }
+            ret.onSelect = r;
+            return ret;
+        }
+        this.stars = [];
+        for(x in this.xml.elementsNamed("star")) this.stars.push(createStar(this,x));
+        this.getStar = function(id){
+            for(x in this.stars) if(x.id == id) return x;
+            return null;
+        }
+        this.title_text = this.xml.elementsNamed("titleText").next(); //assumes that the user added it
+        this.description_text = this.xml.elementsNamed("descriptionText").next(); //assumes that the user added it
+        var it = this.xml.elementsNamed("injectXml");
+        this.injectXml = if(it.hasNext()) [for(x in it.next().elements()) cloneXml(x)] else [];
+    </data>
+
+    <procedure id="showNavMap">
+        <action>
+            function createXmlSprite(id,anim,offx,offy){
+                var xml = Xml.createElement("sprite");
+                xml.set("value","NAVcreateIcon('"+ Std.string(id) +"','" + Std.string(anim) +"')");
+                xml.set("x",Std.string(offx)); xml.set("y",Std.string(offy));
+                return xml;
+            }
+            function createXmlFormattedText(x,y,width,height,color,align){
+                var xml = Xml.createElement("formattedText");
+                xml.set("text","");
+                xml.set("x",Std.string(x));
+                xml.set("y",Std.string(y));
+                if(height != null) xml.set("height",Std.string(height));
+                if(width != null) xml.set("width",Std.string(width));
+                xml.set("align",align);
+                xml.set("color",color);
+                return xml;
+            }
+            function createIcon(id,?anim){
+                if(anim == null) anim = "single";
+                return Structure.makeRenderer(null,new Xml(0),getTile(id),anim);
+            }
+            data = getData("navMap",navMap_data.id);
+            var win = Xml.createElement("window");
+            win.set("type","xml");
+            win.set("animate","false");
+            win.set("x",data.window_x);
+            win.set("y",data.window_y);
+            win.set("width",data.window_width);
+            win.set("height",data.window_height);
+            win.set("closeable","true");
+            win.set("closeButton",data.window_close_button);
+            for(x in data.injectXml){
+                win.addChild(x);
+            }
+            var bg_tile = Xml.createElement("tile");
+            bg_tile.set("id",data.bg_tile);
+            bg_tile.set("animation",data.bg_anim);
+            bg_tile.set("x",data.bg_x);
+            bg_tile.set("y",data.bg_y);
+            win.addChild(bg_tile);
+            for(s in data.stars){
+                try{
+                var button = Xml.createElement("button");
+                button.set("x",s.x);
+                button.set("y",s.y);
+                //TODO
+                button.set("width","16");
+                button.set("height","16");
+                button.set("hideHover","true");
+                button.addChild(createXmlSprite(s.tile,s.anim,8,8));
+                button.addChild(createXmlSprite(s.hover_tile,s.hover_anim,8,8));
+                if(s.id == navMap_data.current) button.addChild(createXmlSprite(data.current_tile,data.current_anim,8,8));
+                var select_xml = Xml.createElement("onSelect");
+                select_xml.addChild(s.onSelect);
+                button.addChild(select_xml);
+                var hover_xml = Xml.createElement("onHover");
+                var hover_action = Xml.createElement("action");
+                var action_string = "try{";
+                action_string += ("window.getChildAt(window.get_numChildren() - " + Std.string(data.window_close_button == "true" ? 4 : 3) + ").scaleX = window.getChildAt(window.get_numChildren() - " + Std.string(data.window_close_button == "true" ? 3 : 2) +").scaleX = 0.5;\n"); // hack to make the text small
+                action_string += ("window.getChildAt(window.get_numChildren() - " + Std.string(data.window_close_button == "true" ? 4 : 3) + ").scaleY = window.getChildAt(window.get_numChildren() - " + Std.string(data.window_close_button == "true" ? 3 : 2) +").scaleY = 0.5;\n"); // hack to make the text small
+                action_string += ("window.getChildAt(window.get_numChildren() - " + Std.string(data.window_close_button == "true" ? 4 : 3) + ").setText(hover ? getText('" + s.title + "').get() : '');\n");
+                action_string += ("window.getChildAt(window.get_numChildren() - " + Std.string(data.window_close_button == "true" ? 3 : 2) +").setText(hover ? getText('" + s.desc + "').get() : '');\n");
+                action_string += ("button.getChildAt(1).visible = hover;\n");
+                action_string += ("}catch(e:Dynamic){log(e);}");
+                hover_action.addChild(Xml.createPCData(action_string));
+                hover_xml.addChild(hover_action);
+                button.addChild(hover_xml);
+                win.addChild(button);
+                }catch(e:Dynamic){
+                    log(e);
+                }
+            }
+            win.addChild(createXmlFormattedText(data.title_text.get("x"),data.title_text.get("y"),data.title_text.get("width"),data.title_text.get("height"),data.title_text.get("color"),data.title_text.get("align")));
+            win.addChild(createXmlFormattedText(data.description_text.get("x"),data.description_text.get("y"),data.description_text.get("width"),data.description_text.get("height"),data.description_text.get("color"),data.description_text.get("align")));
+            evalXml("&lt;action>getLocalPlayer().gui.coins.visible = false;&lt;/action>");
+            evalXml(win.toString());
+        </action>
+    </procedure>
+
+    <!-- <action>navMap_data = {
+        id: "test",
+        current: "start"
+    };</action><run procedure="showNavMap"/> -->
+</zeta>
