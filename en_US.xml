@@ -55,7 +55,7 @@
   </section>
   <section id="world">
     <text id="wyrm_tales.main">Wyrm Island</text>
-    <text id="golem_cave">Golem Cave</text>
+    <text id="wyrm_tales.golem_cave">Golem Cave</text>
     <text id="wyrm_tales.farming">Farming</text>
   </section>
   <section id="familiar">

@@ -9,6 +9,7 @@
   <init>
     <onLoad>
       <action>
+        // until wyrm lord fixes it
         if(modEnabled("wyrms_plus")){
           getMod("wyrms_plus").setEnabled(false);
           reloadData();
@@ -49,6 +50,7 @@
           });
       }
     </action>
+    <include id="navMap.xml"/>
     <include id="en_US.xml" includeRoot="true"/>
     <include id="npcs/scenes.xml"/>
     <include id="music.xml" />
@@ -57,7 +59,5 @@
     <include id="npcs/npc.xml"/>
     <include id="areas/areas.xml"/>
     <include id="player/player.xml"/>
-    
-    <include id="navMap.xml" if="!exists('NAV_DEFINED')"/>
   </init>
 </mod>

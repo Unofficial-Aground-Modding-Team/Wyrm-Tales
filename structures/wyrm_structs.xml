@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+    <structure id="wyrm_storehouse" width="48" height="32" image="{core}/magic1/structures/wyrm_door.png" type="storehouse" main="true" title="common.storehouse">
+        <tooltip id="storehouse"/>
+    </structure>
+    <animation id="wyrm_queen.over" x="32" count="5"/>
+    <animation id="wyrm_queen.talk" equals="wyrm_queen.idle"/>
+    <npc id="wyrm_house" tile="wyrm_queen" animation="wyrm_queen" tileWidth="5" tileHeight="2.8" action="enter" stopForPlayer="false" icon="wyrm_queen.ico" indicatorX="-25" indicatorY="-10" fullHeight="true">
+        <init>
+            <action>
+        function hasWyrmQuest(){
+          for(o in wyrm_quests.elementsNamed("choose").next().elementsNamed("section")) 
+            if(eval(o.get("if")) == true) return true;
+          return false;
+        }
+            </action>
+        </init>
+        <operate>
+            <section if="hasWyrmQuest()">
+                <quest/>
+                <run procedure="wyrm_quests"/>
+            </section>
+            <section>
+                <menu section="common" closeable="true">
+                    <choice id="talk">
+                        <run procedure="wyrm_quests"/>
+                    </choice>
+                    <choice id="sleep_day">
+                        <action>player.fullRestore();</action>
+                        <save sleep="true" />
+                    </choice>
+                    <choice id="sleep_night">
+                        <action>player.fullRestore();</action>
+                        <save toNight="true" />
+                    </choice>
+                </menu>
+            </section>
+        </operate>
+    </npc>    
+</data>

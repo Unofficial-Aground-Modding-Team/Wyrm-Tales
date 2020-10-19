@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+    <tile id="wyrm_tunnel" sheet="{core}/magic1/structures/wyrm_tunnel.png"/>
+    <navMap id="wyrm_tunnels_main" default_star_tile="wyrm_tunnel" default_star_anim="wyrm_tunnels.idle">
+        <titleText x="128 - (50 / 2)" y="10" width="50" color="ffffff" align="center"/>
+        <descriptionText x="110" y="20" width="86" color="ffffff" align="center"/>
+        <onDefaultSelect>
+            <action>
+                window.doClose();
+            </action>
+            <teleport area="id" x="getArea(id).getStructureById('tales_wyrm_tunnel') == null ? 0 : getArea(id).getStructureById('tales_wyrm_tunnel').tile_x" y="getArea(id).getStructureById('tales_wyrm_tunnel') == null ? -1 : getArea(id).getStructureById('tales_wyrm_tunnel').tile_y"/>
+            <dig x="player.tile_x" y="player.tile_y" speed="2" />
+        </onDefaultSelect>
+        <star id="wyrm_tales.main" x="128" y="80" width="16" height="16" title="world>wyrm_tales.main" desc=""/>
+        <star id="wyrm_tales.farming" x="100" y="60" width="16" height="16" title="world>wyrm_tales.farming" desc=""/>
+        <star id="wyrm_tales.golem_cave" x="140" y="50" width="16" height="16" title="world>wyrm_tales.golem_cave" desc=""/>
+    </navMap>
+    <procedure id="show_wyrm_tunnels">
+        <action>
+            navMap_data = {
+                id: "wyrm_tunnels_main",
+                current: getLocalPlayer().area.id
+            };
+        </action>
+        <run procedure="showNavMap"/>
+    </procedure>
+    <structure id='tales_wyrm_tunnel' width='16' height='16' image="{core}/magic1/structures/wyrm_tunnel.png" name="enter">
+        <operate>
+            <run procedure="show_wyrm_tunnels"/>
+        </operate>
+    </structure>
+</data>

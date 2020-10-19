@@ -6,9 +6,7 @@
     <tiles id="grass" y="0" />
     <tiles id="blackstone" y="12" />
 
-    <structure id="tales_wyrm_tunnel" x="1" y="1">
-      <teleport area="wyrm_tales.main" x="3" y="0"/>
-    </structure>
+    <structure id="tales_wyrm_tunnel" x="1" y="1"/>
     <!-- <structure id="WTdockhouse"/>
     <npc id="WTfisherman.cat" x="5"/> -->
     <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
