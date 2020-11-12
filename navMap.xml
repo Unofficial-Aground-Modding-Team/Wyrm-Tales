@@ -69,8 +69,6 @@
                     }
                 }
                 //After the star's onSelect so that stuff in the star's onSelect can stop the default action
-                //Unfortunately `stop` does not seem to work so ....
-                //TODO : get `&lt;stop/>` to work, if possible.
                 for(x in data.xml.elementsNamed("onDefaultSelect")){
                     for(y in x.elements()){
                         r.addChild(cloneXml(y));

@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <data>
   <area id="wyrm_tales.main" background="magic2" width="96" height="96" planet="wyrm_tales">
     <tiles id="grass" top="true"/>

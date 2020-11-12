@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <data>
   <npc id="wyrm.miner.nnpc" layers="wurm" behind="true" animation="wyrm" icon="wyrm.ico" night="true">
     <idle class="mineOre">
@@ -24,45 +25,45 @@
     </idle>
     <color id="wyrm" />
   </npc>
-  <action>
-    try{
-      function getDistance(o1,o2){
-        var dx = o1.xPos - o2.xPos;
-        var dy = o1.yTile - o2.yTile;
-        return Math.sqrt( Math.pow(dx,2) + Math.pow(dy,2));
-      }
-      function wyrmFindTarget(npc,area){
-        var curDis = 2000;
-        var target = null;
-        var objects = area.getAllObjects();
-        for (enemy in objects){
-          if (enemy.info.xml.nodeName() == 'enemy'){
-            if (getDistance(npc,enemy) &lt; curDis){
-              curDis = getDistance(npc,enemy);
-              target = enemy;
-            }
-          }
-        }
-        return target;
-      }
-      function getTargetPos(npc,target){
-        var target_x = target.tile_x + target.getDX();
-        var target_y = target.tile_y;
-        if(target_x &lt; 10 || target_y &lt; 10) return [target_x/2,target_y/2];
-        var dx = target_x/10;
-        var dy = target_y/10;
-        var x = Math.round(dx);
-        var y = Math.round(dy);
-        trace ('First' + [target_x,target_y]);
-        trace ('Second' + [dx,dy]);
-        trace ('Third' + [x,y]);
-        return [x,y];
-      }
-    }catch(e:Dynamic){trace(e);}
-  </action>
-<npc id="wyrm.hunter.nnpc" layers="wurm" speed="2" behind="true" animation="wyrm" icon="wyrm.ico" night="true" wander="true" underground="true">
-    <init>
 
+  <npc id="wyrm.hunter.nnpc" layers="wurm" speed="2" behind="true" animation="wyrm" icon="wyrm.ico" night="true" wander="true" underground="true">
+    <init>
+      <action>
+          try{
+            function getDistance(o1,o2){
+              var dx = o1.xPos - o2.xPos;
+              var dy = o1.yTile - o2.yTile;
+              return Math.sqrt( Math.pow(dx,2) + Math.pow(dy,2));
+            }
+            function wyrmFindTarget(npc,area){
+              var curDis = 2000;
+              var target = null;
+              var objects = area.getAllObjects();
+              for (enemy in objects){
+                if (enemy.info.xml.nodeName() == 'enemy'){
+                  if (getDistance(npc,enemy) &lt; curDis){
+                    curDis = getDistance(npc,enemy);
+                    target = enemy;
+                  }
+                }
+              }
+              return target;
+            }
+            function getTargetPos(npc,target){
+              var target_x = target.tile_x + target.getDX();
+              var target_y = target.tile_y;
+              if(target_x &lt; 10 || target_y &lt; 10) return [target_x/2,target_y/2];
+              var dx = target_x/10;
+              var dy = target_y/10;
+              var x = Math.round(dx);
+              var y = Math.round(dy);
+              trace ('First' + [target_x,target_y]);
+              trace ('Second' + [dx,dy]);
+              trace ('Third' + [x,y]);
+              return [x,y];
+            }
+          }catch(e:Dynamic){trace(e);}
+      </action>
     </init>
     <idle class="locate">
       <getLocation>

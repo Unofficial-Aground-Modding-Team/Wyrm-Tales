@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-
   <action>
     function wyrmModifyEquipment(slot,modifier){
       var item = getLocalPlayer().equipment.get(slot).get();
@@ -40,9 +39,7 @@
         <structure id="tales_wyrm_tunnel" x="1" y="0"/>
         <dialogue text="Here, take this orb of light to help you."/>
         <action>
-        if (!getFlag("WT_light_buddy")){
           setFlag('WT_light_buddy',true);
-        }
         </action>
         <item id="tales_light_buddy"/>
         <equip id="tales_light_buddy"/>
@@ -55,6 +52,7 @@
         <dialogue section="wyrm_queen" id="tales_farming_complete"/>
         <complete quest="tales_farming" useResources="false"/>
       </section>
+      <!-- Possibly bring this back, but make it use less flags -->
       <!-- <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
         <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
         <action>setFlag("learnGolem",true);</action>

@@ -1,6 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
 <data>
-  <include id='nnpc.xml'/>
+  <include id="nnpc.xml"/>
   <include id="scenes.xml"/>
-  <include id='queen.xml'/>
+  <include id="queen.xml"/>
   <include id="WTfisherman.xml"/>
 </data>

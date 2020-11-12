@@ -1,13 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
 <data>
   <scene id="wyrm_tales">
     <show id="intro">
       <music id="Cutscene9"/>
-      <layer id="black" /><dialogue text="Welcome to this world, my child."/>
-      <!-- TODO : Change the text a bit.-->
-      <dialogue text="You are a wyrm. I am your mother. Obey me, and you will thrive. If you disobey.[pause=2] .[pause=2] . you shall perish."/>
-      <dialogue text="If you wish to sleep, come to me. You may use the mouth of the Grand Queen as a Storehouse. She won't mind, since she is dead."/>
-      <dialogue text="Oh yes, one last thing before you go into the world. . you will travel with another wyrm. You will soon discover the reason for this."/>
-      <!-- <wait seconds="1" /> -->
+      <layer id="black" />
+      <dialogue section="scene.wyrm_queen" id="intro1"/>
+      <dialogue section="scene.wyrm_queen" id="intro2"/>
+      <dialogue section="scene.wyrm_queen" id="intro3"/>
+      <dialogue section="scene.wyrm_queen" id="intro4"/>
     </show>
   </scene>
 </data>

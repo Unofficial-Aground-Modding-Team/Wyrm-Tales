@@ -1,5 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
 <data>
-
   <area id="wyrm_tales.farming" width="32" height="12" background="sky">
     <tiles id="dirt" start="0" end="0.5" />
     <tiles id="stone" start="0.5" end="1" />
@@ -7,8 +7,6 @@
     <tiles id="blackstone" y="12" />
 
     <structure id="tales_wyrm_tunnel" x="1" y="1"/>
-    <!-- <structure id="WTdockhouse"/>
-    <npc id="WTfisherman.cat" x="5"/> -->
     <shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
     <shore x="32" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
     <appendArea id="sea_floor">

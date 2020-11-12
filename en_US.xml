@@ -79,6 +79,12 @@
     <text id="golem_mine_complete">You found a spirit gem? Very good! You need to find more of them!</text>
     <text id="tales_farming_complete">With those seeds you will be able to make new foods. Those will be important if you make long trips.</text>
   </section>
+  <section id="scene.wyrm_queen">
+    <text id="intro1">Welcome to this world, my child.</text>
+    <text id="intro2">You are a wyrm. I am your mother. Obey me, and you will thrive. If you disobey.[pause=2] .[pause=2] . you shall perish.</text>
+    <text id="intro3">If you wish to sleep, come to me. You may use the mouth of the Grand Queen as a Storehouse. She won't mind, since she is dead.</text>
+    <text id="intro4">Oh yes, one last thing before you go into the world. . you will travel with another wyrm. You will soon discover the reason for this.</text>
+  </section>
   <section id="quests">
     <text id="tales_sacrifice">Sacrifice</text>
     <text id="golem_mine">Golem Cave</text>

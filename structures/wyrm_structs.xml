@@ -8,11 +8,11 @@
     <npc id="wyrm_house" tile="wyrm_queen" animation="wyrm_queen" tileWidth="5" tileHeight="2.8" action="enter" stopForPlayer="false" icon="wyrm_queen.ico" indicatorX="-25" indicatorY="-10" fullHeight="true">
         <init>
             <action>
-        function hasWyrmQuest(){
-          for(o in wyrm_quests.elementsNamed("choose").next().elementsNamed("section")) 
-            if(eval(o.get("if")) == true) return true;
-          return false;
-        }
+                function hasWyrmQuest(){
+                    for(o in wyrm_quests.elementsNamed("choose").next().elementsNamed("section")) 
+                        if(eval(o.get("if")) == true) return true;
+                    return false;
+                }
             </action>
         </init>
         <operate>
@@ -36,5 +36,5 @@
                 </menu>
             </section>
         </operate>
-    </npc>    
+    </npc>
 </data>
