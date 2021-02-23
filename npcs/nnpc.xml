@@ -84,7 +84,7 @@
           var dy = target.tile_y - this.tile_y;
             dy = Math.ceil(dy/2);
             if (dy > 5) dy = 5; else if (dy &lt; -5) dy = -5;
-            if (dx == 0 && dy == 0) dx = Math.round(random())-0.5;
+            if (dx == 0 &amp;&amp; dy == 0) dx = Math.round(random())-0.5;
             //goes half the distance between the pokemon and the target each time it checks for where to go, but only up to 5 tiles
           //return [this.tile_x + dx, this.tile_y + dy];
           return getTargetPos(this,target);

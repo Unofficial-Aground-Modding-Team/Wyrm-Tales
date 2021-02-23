@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <zeta>
-    <section if="!exists('NAV_MAP_INCLUDE')">
+    <section if="!exists('NAV_MAP_INCLUDED')">
         <action>
             NAV_MAP_INCLUDED = true;
         </action>

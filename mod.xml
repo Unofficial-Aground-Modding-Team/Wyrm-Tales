@@ -2,7 +2,7 @@
 <mod>
   <name>Wyrm Tales</name>
   <description>Wyrms!</description>
-  <author>Zeta Labs</author>
+  <author>Zeta</author>
   <version>0.0.1</version>
   <loadAfter>Full Version</loadAfter>
   <loadAfter>wyrms plus</loadAfter>
@@ -46,7 +46,7 @@
       }
       function cf(obj){
           return classFields(obj).filter(function(o){
-              return !StringTools.startsWith(o,eval("\"_\"+\"_\""));
+              return o == Reflect.escape(o);
           });
       }
     </action>

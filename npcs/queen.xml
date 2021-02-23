@@ -22,7 +22,7 @@
         <dialogue section="wyrm_queen" id="sacrifice1" speaker="this"/>
         <quest id="tales_sacrifice"/>
       </section>
-      <section if="player.canCompleteQuest('tales_sacrifice') && player.hasQuest('tales_sacrifice')">
+      <section if="player.canCompleteQuest('tales_sacrifice') &amp;&amp; player.hasQuest('tales_sacrifice')">
         <dialogue text="Good. Very good."/>
         <action>
           wyrmUpgrade('wyrm_weapon1');
@@ -31,7 +31,7 @@
         </action>
         <complete quest="tales_sacrifice" />
       </section>
-      <section if="!player.hasQuest('golem_mine') && !player.hasQuest('tales_farming') && player.questComplete('tales_sacrifice')">
+      <section if="!player.hasQuest('golem_mine') &amp;&amp; !player.hasQuest('tales_farming') &amp;&amp; player.questComplete('tales_sacrifice')">
         <dialogue section="wyrm_queen" id="golem_mine1"/>
         <dialogue section="wyrm_queen" id="golem_mine2"/>
         <quest id="golem_mine"/>
@@ -53,7 +53,7 @@
         <complete quest="tales_farming" useResources="false"/>
       </section>
       <!-- Possibly bring this back, but make it use less flags -->
-      <!-- <section if="getFlag('WTGolemStatue') && !getFlag('learnGolem')">
+      <!-- <section if="getFlag('WTGolemStatue') &amp;&amp; !getFlag('learnGolem')">
         <dialogue section="wyrm_queen" dialogue="golem_learn1"/>
         <action>setFlag("learnGolem",true);</action>
       </section> -->
@@ -75,7 +75,7 @@
     <item id="spirit_gem"/>
   </quest>
   <quest id="tales_farming" exp="100" giver="npc_wyrm_queen">
-    <script id="player.hasItem('wheat_seed') && player.hasItem('sugar_seed') && player.hasItem('orchard_seed') && player.hasItem('cotton_seed') && player.hasItem('rice_seed')" name="quest>gather_seeds" tile="tree_seed.ico"/>
+    <script id="player.hasItem('wheat_seed') &amp;&amp; player.hasItem('sugar_seed') &amp;&amp; player.hasItem('orchard_seed') &amp;&amp; player.hasItem('cotton_seed') &amp;&amp; player.hasItem('rice_seed')" name="quest>gather_seeds" tile="tree_seed.ico"/>
     <!-- <item id="plant_gem" hidden="true"/> -->
   </quest>
   <quest id="tales_spirit_upgrade" exp="100" give="npc_wyrm_queen">

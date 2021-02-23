@@ -4,4 +4,5 @@
   <include id="scenes.xml"/>
   <include id="queen.xml"/>
   <include id="WTfisherman.xml"/>
+  <include id="blue_furry.xml"/>
 </data>

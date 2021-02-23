@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <npcs>
 	<object id="WTfisherman.boat" tile="fisherman.boat" animation="fisherman.boat.idle" layer="back" renderer="floating" waterLine="57">
-		<tooltip section="npc" id="talk" if="!getFlag('fisherman_intro') && this.tile_x > 200" />
+		<tooltip section="npc" id="talk" if="!getFlag('fisherman_intro') &amp;&amp; this.tile_x > 200" />
 		<operate>
 		</operate>
 	</object>
@@ -19,7 +19,7 @@
 	<action>
 		function hasFish(?fish){
 			var player = getLocalPlayer();
-			if (player.hasItem('toothfish') || player.hasItem('rockfish') || player.hasItem('coral_cod') || (getItem(fish) != null && getItem(fish).xml.get("isFish") == "true"))
+			if (player.hasItem('toothfish') || player.hasItem('rockfish') || player.hasItem('coral_cod') || (getItem(fish) != null &amp;&amp; getItem(fish).xml.get("isFish") == "true"))
 				return fish != null ? player.hasItem(fish) : true;
 			else return false;
 		}
